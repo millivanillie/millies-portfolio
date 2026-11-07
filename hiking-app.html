@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hiking App Redesign — Millie Dayaram</title>
+  <meta name="description" content="Redesigning a hiking app so people with low vision or limited hand use can plan and follow trails with confidence.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="grid-lines" aria-hidden="true"></div>
+
+  <aside class="rail" aria-hidden="true">
+    <span class="rail__label"><strong>Millie</strong> Dayaram</span>
+    <span class="rail__label" data-rail-section>Overview</span>
+    <span class="rail__section">Hiking App</span>
+  </aside>
+
+  <div class="page">
+    <header class="site-header wrap">
+      <a class="site-header__name" href="index.html">Millie Dayaram</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html#work" aria-current="page">Work</a></li>
+          <li><a href="index.html#approach">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="resume.pdf">Resume</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="wrap cs-layout">
+      <!-- Case study contents: stays beside the page as you scroll. Subheadings
+           are added automatically from the h3 headings in each section. -->
+      <nav class="toc" aria-label="Case study contents">
+        <p class="toc__title">tl;dr</p>
+        <ol class="toc__list">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#discover">Discover</a></li>
+          <li><a href="#define">Define</a></li>
+          <li><a href="#develop">Develop</a></li>
+          <li><a href="#deliver">Deliver</a></li>
+          <li><a href="#reflection">Reflection</a></li>
+        </ol>
+      </nav>
+
+      <div class="cs-body">
+      <section class="cs-hero" id="overview" data-section="Overview" aria-labelledby="cs-title">
+        <div class="cs-hero__text">
+          <h1 class="cs-hero__title" id="cs-title">Hiking App Redesign</h1>
+          <p class="cs-hero__summary">Redesigning a hiking app to be more accessible so users can plan and follow trails with confidence.</p>
+          <a class="pill pill--quiet" href="index.html#work">Back to all work</a>
+        </div>
+        <div class="cs-hero__media">
+          <img class="cs-hero__img" src="images/hiking-project/hiking-project-iphone-mockup.png" alt="The redesigned hiking app on an iPhone, with higher-contrast colours, larger text and easier-to-reach buttons.">
+        </div>
+      </section>
+
+      <dl class="cs-facts">
+        <div><dt>Role</dt><dd><span class="todo">Solo Project</span></dd></div>
+        <div><dt>Timeline</dt><dd><span class="todo">Sep–Dec 2025</span></dd></div>
+        <div><dt>Tools</dt><dd><span class="todo">Protopie<br>Figma</span></dd></div>
+        <div><dt>Methods</dt><dd><span class="todo">User Research<br>Accessible Design<br>Prototyping<br>UI/UX</span></dd></div>
+      </dl>
+
+      <section class="cs-section" data-section="Challenge" aria-labelledby="problem">
+        <h2 id="problem">The challenge</h2>
+        <div>
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Problem</h3>
+            <p>The ‘Hiking Project’ app contains a selection of hikes from all around the world. Users can download the area of interest (ex. Ontario, Ecuador), and then use the map feature to search for trails in that area. They are also able to create an account to save the hike and write notes about their experience. After applying Microsoft’s Inclusive Design methodology, it became apparent this app had multiple exclusionary features.</p>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">The User Experience</h3>
+            <p>For this project, I decided to focus on two specific scenarios that would make this app especially difficult to navigate and redesign it to make it more accessible. The disabilities were framed as situational, temporary and permanent. The two scenarios chosen were people who:</p>
+            <ol class="findings findings--pair">
+              <li>
+                <h4 class="findings__title">Only had access to one hand</h4>
+                <p><span class="todo">Permanent: one arm. Temporary: an arm injury. Situational: holding a hiking pole or a dog leash.</span></p>
+              </li>
+              <li>
+                <h4 class="findings__title">Had a severe visual impairment</h4>
+                <p><span class="todo">Permanent: blindness or low vision. Temporary: an eye injury or cataracts. Situational: bright sunlight on the trail.</span></p>
+              </li>
+            </ol>
+
+            <!-- Hotspots: hover over (or tap, or tab to) a + on the phone to see that issue.
+                 Move a + by changing its --x / --y (position on the phone image, from the
+                 top-left). hot--right opens the pop-up to the right of the +, hot--left to the left.
+                 The lime box for each issue uses the same --x / --y / --w / --h as before. -->
+            <div class="hotspots hotspots--center" data-hotspots>
+              <figure class="hotspots__phone">
+                <img src="images/hiking-project/iphone_app_mockup.png" alt="The hiking app’s map screen, with three marked problem areas: the header bar, the buttons at the top of the screen, and the navigation labels." loading="lazy">
+                <span class="scrolly__mark hot__mark" data-mark="1" style="--x: 6.5%; --y: 12.7%; --w: 86.6%; --h: 7.1%;" aria-hidden="true"></span>
+                <span class="scrolly__mark hot__mark" data-mark="2" style="--x: 4.9%; --y: 9.9%; --w: 90.5%; --h: 31.1%;" aria-hidden="true"></span>
+                <span class="scrolly__mark hot__mark" data-mark="3" style="--x: 9%; --y: 80.6%; --w: 84.5%; --h: 7%;" aria-hidden="true"></span>
+                <div class="hot hot--right" data-hot="1" style="--x: 9%; --y: 16.2%;">
+                  <button class="hot__btn" type="button" aria-expanded="false" aria-controls="hot-1" aria-describedby="hot-1">
+                    <span class="visually-hidden">Issue 1: Light font weight against a dark background</span>
+                  </button>
+                  <div class="hot__pop" id="hot-1" role="note">
+                    <p class="hot__count">01 / 03</p>
+                    <h4 class="hot__title">Light font weight against a dark background</h4>
+                    <dl class="hot__detail">
+                      <dt>The issue</dt>
+                      <dd>Font colour and background pass the WCAG contrast requirements, but the text and borders are thin, which can make them difficult to read for people with a visual impairment.</dd>
+                      <dt>The solution</dt>
+                      <dd>Make colours brighter and font weights bolder so items are more legible, and let users switch between light and dark mode.</dd>
+                    </dl>
+                  </div>
+                </div>
+                <div class="hot hot--right" data-hot="2" style="--x: 62%; --y: 24%;">
+                  <button class="hot__btn" type="button" aria-expanded="false" aria-controls="hot-2" aria-describedby="hot-2">
+                    <span class="visually-hidden">Issue 2: Option buttons too high up on the screen</span>
+                  </button>
+                  <div class="hot__pop" id="hot-2" role="note">
+                    <p class="hot__count">02 / 03</p>
+                    <h4 class="hot__title">Option buttons too high up on the screen</h4>
+                    <dl class="hot__detail">
+                      <dt>The issue</dt>
+                      <dd><span class="todo">Studies show the bottom 1/3 of the phone screen is the easiest to access for users of all ages who are using either right or left hand. Buttons at the top of the screen require the user to adjust the way they hold the phone, disrupting user flow. However, as most users are right-handed, having buttons on the upper right side does not cause as many issues for users.</span></dd>
+                      <dt>The solution</dt>
+                      <dd><span class="todo">Buttons at the top should be relocated to the bottom half of the phone or reconfigured in the bottom nav menu for functional purposes. </span></dd>
+                    </dl>
+                  </div>
+                </div>
+                <div class="hot hot--right" data-hot="3" style="--x: 36%; --y: 77%;">
+                  <button class="hot__btn" type="button" aria-expanded="false" aria-controls="hot-3" aria-describedby="hot-3">
+                    <span class="visually-hidden">Issue 3: Small text under icons</span>
+                  </button>
+                  <div class="hot__pop" id="hot-3" role="note">
+                    <p class="hot__count">03 / 03</p>
+                    <h4 class="hot__title">Small text under icons</h4>
+                    <dl class="hot__detail">
+                      <dt>The issue</dt>
+                      <dd>The labels under the navigation icons are smaller than 16px, which makes them hard to read for people with a visual impairment. Grey text on white background has a contrast ratio of 2.86:1 and does not meet W3C standards.</dd>
+                      <dt>The solution</dt>
+                      <dd><span class="todo">Increase the text size and create more visual contrast between icons, text, and background.</span></dd>
+                    </dl>
+                  </div>
+                </div>
+              </figure>
+              <p class="hotspots__hint">Hover over each <span class="hotspots__plus" aria-hidden="true">+</span> to see the issue</p>
+            </div>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Solution</h3>
+            <!-- Video: plays on its own (muted, looping) when it scrolls into view and
+                 pauses when it scrolls away. -->
+            <figure class="cs-video cs-video--inline">
+              <div class="cs-video__stage">
+                <video class="cs-video__player" data-autoplay-on-scroll
+                       muted loop playsinline preload="metadata"
+                       poster="images/hiking-project/hiking-demo-poster.jpg"
+                       width="724" height="1172" style="aspect-ratio: 724 / 1172"
+                       aria-label="Walkthrough of the redesigned hiking app: the welcome screen, a prompt to download trail areas, the list of provinces to download, and the map of downloaded trails.">
+                  <source src="images/hiking-project/hiking-demo.mp4" type="video/mp4">
+                </video>
+                <button class="pill cs-video__toggle" type="button" data-video-toggle hidden>
+                  <span data-video-toggle-label>Pause video</span>
+                </button>
+              </div>
+              <figcaption class="cs-video__caption">Final design created as a <span class="todo"><a href="https://sheridan.protopie.cloud/p/a7b1785088936c1588417d8e?ui=true&scaleToFit=true&enableHotspotHints=true&cursorType=touch&mockup=true&bgColor=%23F5F5F5&bgImage=undefined&playSpeed=1" target="_blank" rel="noopener noreferrer">prototype</a></span> in Protopie</figcaption>
+            </figure>
+
+            <p>Redesigning the app with improved colour contrast, larger text options, and improved button placement.</p>
+
+            <ul class="highlights">
+              <li>
+                <h4 class="highlights__title">Higher contrast</h4>
+                <p>Higher contrast between UI elements confirmed with W3C's accessibility guidelines.</p>
+              </li>
+              <li>
+                <h4 class="highlights__title">Larger text</h4>
+                <p>Text is larger in nav and content areas with strong contrast between elements and background.</p>
+              </li>
+              <li>
+                <h4 class="highlights__title">Reachable buttons</h4>
+                <p>Buttons and search bar added so that users can navigate the map, instead of needing to move to another page.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" data-section="Discover" aria-labelledby="discover">
+        <h2 id="discover">Discover</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">As I wasn't very familiar with accessibility guidelines for mobile apps, I started the process with research: what was the best way to place UI elements on a mobile screen? How big should text and icons be? What were the most common accessibility standards?</span></p>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">How Might We</h3>
+            <p>Before starting the research process, I used a 'How Might We' question to guide my investigation and final design.</p>
+            <p class="cs-hmw"><strong>How might we</strong> allow individuals with only one hand and/or severe visual impairment feel confident in navigating the various features in the hiking app such as searching for new hiking spots in their location and favouriting the hike for next time?</p>
+          </div>
+
+           <div class="cs-sub">
+            <h3 class="cs-sub__title">Independent Research</h3>
+            <p>I started by reviewing academic literature on mobile accessibility and user experience design. I also read the World Wide Web Consortium (W3C) and Web Content Accessibility Guidelines (WCAG) to familiarize myself with the current design standards.</p>
+            <!-- <ul class="people">
+              <li>
+                <p class="people__name">P1</p>
+                <p><span class="todo">Age, how they hike, and their vision or hand-use needs</span></p>
+              </li>
+              <li>
+                <p class="people__name">P2</p>
+                <p><span class="todo">Age, how they hike, and their vision or hand-use needs</span></p>
+              </li>
+              <li>
+                <p class="people__name">P3</p>
+                <p><span class="todo">Age, how they hike, and their vision or hand-use needs</span></p>
+              </li>
+              <li>
+                <p class="people__name">P4</p>
+                <p><span class="todo">Age, how they hike, and their vision or hand-use needs</span></p>
+              </li>
+            </ul> -->
+          </div>
+
+          <!-- Stats: each number counts up from 0. Change data-count and the number
+               beside it, or delete this block if you don't have numbers.
+          <ul class="stats" aria-label="Research results">
+              <li>
+                <p class="stats__num"><span data-count="0" data-suffix="%">0%</span></p>
+                <p class="stats__label"><span class="todo">What this number measures</span></p>
+              </li>
+              <li>
+                <p class="stats__num"><span data-count="0" data-suffix="%">0%</span></p>
+                <p class="stats__label"><span class="todo">What this number measures</span></p>
+              </li>
+              <li>
+                <p class="stats__num"><span data-count="0" data-suffix="%">0%</span></p>
+                <p class="stats__label"><span class="todo">What this number measures</span></p>
+              </li>
+          </ul>  -->
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Insights</h3>
+            <p>After conducting my research, I identified several key insights that would help inform the new design of the hiking app.</p>
+            <ol class="findings">
+              <li>
+                <h4 class="findings__title">Phone/hand positioning</h4>
+                <p>Approximately 90% of people around the world are right-handed, which means most devices are designed for right-handed users. If a person is unable to use their right hand, they may struggle with certain app features.</p>
+              </li>
+              <li>
+                <h4 class="findings__title">Increased smartphone use</h4>
+                <p>A growing number of visually impaired and blind people are using a smartphone for performing their daily life activities.</p>
+              </li>
+              <li>
+                <h4 class="findings__title">Embedded accessibility functions</h4>
+                <p>Many functions for people with visual impairments have been embedded within the phone’s software and are not always app-dependent.</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Competitive analysis</h3>
+            <p><span class="todo">I compared the Hiking Project app with four other map and navigation apps to see how each one handles accessibility for people with low vision or limited hand use.</span></p>
+
+            <!-- Phones: scroll down and they slide sideways, one app at a time.
+                 On phones (or with reduced motion) they're a row you swipe through. -->
+            <div class="hscroll" data-hscroll>
+              <div class="hscroll__stage">
+                <ol class="hscroll__track" aria-label="Apps compared">
+              <li class="rival" data-app="apple-maps">
+                <div class="iphone">
+                  <img src="images/hiking-project/compare/apple-maps.png" alt="Apple Maps home screen: a full-screen map of Lake Ontario with the search bar and profile photo at the bottom, and map controls on the right." loading="lazy">
+                </div>
+                <div class="rival__info">
+                  <p class="rival__tag">Competitor 1 of 4</p>
+                  <h4 class="rival__name">Apple Maps</h4>
+                  <p class="rival__note"><span class="todo">Default navigation app for all Apple devices</span></p>
+                  <!-- the feature chart below fills in from the table further down -->
+                  <div class="rival__chart" data-rival-chart></div>
+                </div>
+              </li>
+              <li class="rival" data-app="google-maps">
+                <div class="iphone">
+                  <img src="images/hiking-project/compare/google-maps.png" alt="Google Maps home screen: a search bar and category buttons along the top, a map of southern Ontario, and Explore, You and Contribute tabs along the bottom." loading="lazy">
+                </div>
+                <div class="rival__info">
+                  <p class="rival__tag">Competitor 2 of 4</p>
+                  <h4 class="rival__name">Google Maps</h4>
+                  <p class="rival__note"><span class="todo">Listed at #1 in the App Store</span></p>
+                  <!-- the feature chart below fills in from the table further down -->
+                  <div class="rival__chart" data-rival-chart></div>
+                </div>
+              </li>
+              <li class="rival" data-app="waze">
+                <div class="iphone">
+                  <img src="images/hiking-project/compare/waze.png" alt="Waze home screen: a street map with a menu button at the top left and a ‘Where to?’ search bar at the bottom." loading="lazy">
+                </div>
+                <div class="rival__info">
+                  <p class="rival__tag">Competitor 3 of 4</p>
+                  <h4 class="rival__name">Waze</h4>
+                  <p class="rival__note"><span class="todo">Listed at #4 in the App Store</span></p>
+                  <!-- the feature chart below fills in from the table further down -->
+                  <div class="rival__chart" data-rival-chart></div>
+                </div>
+              </li>
+              <li class="rival" data-app="mapquest">
+                <div class="iphone">
+                  <img src="images/hiking-project/compare/mapquest.png" alt="MapQuest home screen: Search and Directions buttons at the top, category buttons, a map of North America, and a ‘Let’s explore!’ panel with My Places at the bottom." loading="lazy">
+                </div>
+                <div class="rival__info">
+                  <p class="rival__tag">Competitor 4 of 4</p>
+                  <h4 class="rival__name">MapQuest</h4>
+                  <p class="rival__note"><span class="todo">Listed at #37 in the App Store</span></p>
+                  <!-- the feature chart below fills in from the table further down -->
+                  <div class="rival__chart" data-rival-chart></div>
+                </div>
+              </li>
+                </ol>
+                <div class="hscroll__progress" aria-hidden="true"><span class="hscroll__bar"></span></div>
+              </div>
+            </div>
+            <p class="hscroll__hint">Swipe to compare →</p>
+
+            <!-- All five side by side. This table is where you change the ratings:
+                 the chart next to each phone above copies from it.
+                 Ratings: rate--yes, rate--partly or rate--no (the word inside is what people read). -->
+            <h4 class="compete__title">All five side by side</h4>
+            <div class="compete" tabindex="0" role="region" aria-label="Competitive analysis table, scrolls sideways on small screens">
+              <table class="compete__table" data-compete>
+                <thead>
+                  <tr>
+                    <th scope="col">Feature</th>
+                    <th scope="col" data-app="hiking-project" class="compete__us">Hiking Project</th>
+                    <th scope="col" data-app="apple-maps">Apple Maps</th>
+                    <th scope="col" data-app="google-maps">Google Maps</th>
+                    <th scope="col" data-app="waze">Waze</th>
+                    <th scope="col" data-app="mapquest">MapQuest</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Colour contrast</th>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--no">No</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--yes">Yes</span></span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Text size</th>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--yes">Yes</span></span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Buttons within thumb reach</th>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--yes">Yes</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                  </tr>
+                  <!--<tr>
+                    <th scope="row">Find trails by location</th>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--yes">Yes</span></span></td>
+                    <td><span class="todo"><span class="rate rate--no">No</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Screen reader support</th>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--yes">Yes</span></span></td>
+                    <td><span class="todo"><span class="rate rate--yes">Yes</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                    <td><span class="todo"><span class="rate rate--partly">Partly</span></span></td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
+
+            <p class="cs-hmw"><strong>Takeaway:</strong> Most navigation apps were doing one or two things really well, but required improvement in mostly all the same areas. I also realized that the accessibility features embedded in the phone's system could be utilized to improve the experience for some users (e.g. speech-to-text feature, increasing text size).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" data-section="Define" aria-labelledby="define">
+        <h2 id="define">Define</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">I focused on the two changes that would help most: stronger colour contrast for people with low vision, and better-placed buttons for people using one hand.</span></p>
+
+         <!-- <div class="cs-sub">
+            <h3 class="cs-sub__title">User needs</h3>
+            <p>Features that are designed for users with situational, temporary or permanent limitations, specifically when it comes to vision and hand movement.</p>
+            <div class="xp">
+              <article class="xp__card">
+                <h3 class="xp__title"><span class="todo">Persona or need 1</span></h3>
+                <p><span class="todo">Who they are and what they need from the app.</span></p>
+              </article>
+              <article class="xp__card">
+                <h3 class="xp__title"><span class="todo">Persona or need 2</span></h3>
+                <p><span class="todo">Who they are and what they need from the app.</span></p>
+              </article>
+            </div>
+          </div> -->
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">User journey map</h3>
+            <p>Based on my research, I created a journey map for someone using the app with low vision or one hand, which illuminated where a person would experience pain points and successes. Through this exercise, I was able to easily identify specific areas for improvement.</p>
+
+            <!-- Journey map: the curve and stage names stay pinned at the top while you
+                 scroll through each stage; the current stage lights up. Clicking a stage
+                 jumps to it. -->
+            <div class="journey" data-journey>
+              <div class="journey__head">
+              <div class="journey__curve" aria-hidden="true">
+                <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+                  <line class="journey__mid" x1="0" y1="100.0" x2="1000" y2="100.0"/>
+                  <path class="journey__line" d="M 100.0 52.4 C 200.0 52.4, 200.0 97.2, 300.0 97.2 C 400.0 97.2, 400.0 136.4, 500.0 136.4 C 600.0 136.4, 600.0 91.6, 700.0 91.6 C 800.0 91.6, 800.0 41.2, 900.0 41.2"/>
+                  <circle class="journey__dot" data-stage="planning" cx="100.0" cy="52.4" r="9"/><circle class="journey__dot" data-stage="initial" cx="300.0" cy="97.2" r="9"/><circle class="journey__dot" data-stage="discovery" cx="500.0" cy="136.4" r="9"/><circle class="journey__dot" data-stage="sharing" cx="700.0" cy="91.6" r="9"/><circle class="journey__dot" data-stage="resolution" cx="900.0" cy="41.2" r="9"/>
+                </svg>
+                <span class="journey__axis journey__axis--pos">Positive</span>
+                <span class="journey__axis journey__axis--neg">Negative</span>
+              </div>
+              <nav class="journey__tabs" aria-label="Journey stages">
+              <a class="journey__tab" href="#jp-planning" data-stage="planning">
+                <span class="journey__emoji" aria-hidden="true">😄</span>
+                <span class="journey__feel">Excited</span>
+                <span class="journey__stage">Planning</span>
+              </a>
+              <a class="journey__tab" href="#jp-initial" data-stage="initial">
+                <span class="journey__emoji" aria-hidden="true">😕</span>
+                <span class="journey__feel">Unsure</span>
+                <span class="journey__stage">Initial assessment</span>
+              </a>
+              <a class="journey__tab" href="#jp-discovery" data-stage="discovery">
+                <span class="journey__emoji" aria-hidden="true">😣</span>
+                <span class="journey__feel">Frustrated</span>
+                <span class="journey__stage">Discovery</span>
+              </a>
+              <a class="journey__tab" href="#jp-sharing" data-stage="sharing">
+                <span class="journey__emoji" aria-hidden="true">😕</span>
+                <span class="journey__feel">Unsure</span>
+                <span class="journey__stage">Sharing</span>
+              </a>
+              <a class="journey__tab" href="#jp-resolution" data-stage="resolution">
+                <span class="journey__emoji" aria-hidden="true">😌</span>
+                <span class="journey__feel">Relieved</span>
+                <span class="journey__stage">Resolution</span>
+              </a>
+              </nav>
+              </div>
+            <section class="journey__panel" id="jp-planning" data-stage="planning" aria-label="Planning">
+              <p class="journey__step">Stage 1 of 5 · Planning</p>
+              <blockquote class="journey__quote">“I’m really looking forward to this hike. It’ll be so good to get out.”</blockquote>
+              <div class="journey__cards journey__cards--key">
+                <div class="journey__card journey__card--pain">
+                  <h5>Pain points</h5>
+                  <ul><li>Using the app for the first time, unsure where to start.</li></ul>
+                </div>
+              </div>
+              <details class="journey__more">
+                <summary>See full stage <span class="journey__more-hint">goal, touchpoints, actions</span></summary>
+                <div class="journey__cards">
+                    <div class="journey__card">
+                      <h5>Goal</h5>
+                      <p>User is making plans with friends to go on a hike. They want to experience a trail they’ve never been on before.</p>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Touchpoints</h5>
+                      <p>Mobile phone</p>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Actions</h5>
+                      <p>Texting and calling friends to make plans.</p>
+                    </div>
+                </div>
+              </details>
+            </section>
+            <section class="journey__panel" id="jp-initial" data-stage="initial" aria-label="Initial assessment">
+              <p class="journey__step">Stage 2 of 5 · Initial assessment</p>
+              <blockquote class="journey__quote">“I hope I can find a hike easily.”</blockquote>
+              <div class="journey__cards journey__cards--key">
+                <div class="journey__card journey__card--pain">
+                  <h5>Pain points</h5>
+                  <ul><li>She has to download the area before she can see any hiking spots.</li><li>She has to scroll through the ‘Areas’ section until she finds her location.</li></ul>
+                </div>
+                <div class="journey__card journey__card--req">
+                  <h5>Design requirements</h5>
+                  <ul><li>A pop-up message that reduces confusion for new users by clearly indicating that an area has to be downloaded, or suggesting they go to ‘Areas’ to find it.</li><li>Add a ‘Download area’ button on the map screen, instead of or alongside the pop-up.</li><li>Add a search bar or filter in ‘Areas’ so users can find their location without scrolling the whole list.</li></ul>
+                </div>
+              </div>
+              <details class="journey__more">
+                <summary>See full stage <span class="journey__more-hint">goal, touchpoints, actions, opportunity</span></summary>
+                <div class="journey__cards">
+                    <div class="journey__card">
+                      <h5>Goal</h5>
+                      <p>Use a hiking app to find trails in the area for the first time.</p>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Touchpoints</h5>
+                      <p>Uses phone to access the ‘Hiking Project’ app.</p>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Actions</h5>
+                      <ul><li>Opens the ‘Hiking Project’ app.</li><li>Zooms in on the map to find hikes in her area. A pop-up offers the option to download the area.</li><li>Selects ‘Download Area’, which takes her to the ‘Areas’ screen.</li><li>Selects ‘Go to area’, which takes her back to the map, where she can select a trail.</li></ul>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Opportunity</h5>
+                      <p>Make the pop-up clearer that an area has to be downloaded to view its trails, and that it can easily be removed.</p>
+                    </div>
+                </div>
+              </details>
+            </section>
+            <section class="journey__panel" id="jp-discovery" data-stage="discovery" aria-label="Discovery">
+              <p class="journey__step">Stage 3 of 5 · Discovery</p>
+              <blockquote class="journey__quote">“I feel like I’m met with a wall at every turn and have to ask somebody for help. I feel like I’m not using this app right.”</blockquote>
+              <div class="journey__cards journey__cards--key">
+                <div class="journey__card journey__card--pain">
+                  <h5>Pain points</h5>
+                  <ul><li>The search bar only takes her to the area. It doesn’t show nearby hikes.</li><li>To find hikes, she has to open ‘Areas’ and scroll through every place until she finds hers.</li><li>Difficulty is shown with shapes and no text on the trail page, so it’s hard to understand without having seen the legend.</li></ul>
+                </div>
+                <div class="journey__card journey__card--req">
+                  <h5>Design requirements</h5>
+                  <p>Allow hikes to be found as the user scrolls on the map.</p>
+                </div>
+              </div>
+              <details class="journey__more">
+                <summary>See full stage <span class="journey__more-hint">goal, touchpoints, actions, opportunity</span></summary>
+                <div class="journey__cards">
+                    <div class="journey__card">
+                      <h5>Goal</h5>
+                      <p>User is navigating the app, trying to find hikes in her area and at her activity level.</p>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Touchpoints</h5>
+                      <p>Using the ‘Hiking Project’ app on her smartphone.</p>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Actions</h5>
+                      <ul><li>Types her location into the search bar, but no hikes show up.</li><li>Tries ‘Top Hikes’, but can’t filter them by location.</li><li>Goes to ‘Areas’ and scrolls through locations until she finds hers, then finds hikes in her area.</li><li>Uses ‘Filter’ on the right side of the map to find suitable hikes.</li></ul>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Opportunity</h5>
+                      <p>Add a tutorial that shows new users how to use the app.</p>
+                    </div>
+                </div>
+              </details>
+            </section>
+            <section class="journey__panel" id="jp-sharing" data-stage="sharing" aria-label="Sharing">
+              <p class="journey__step">Stage 4 of 5 · Sharing</p>
+              <blockquote class="journey__quote">“I hope my friends can view the information okay and that the directions are correct.”</blockquote>
+              <div class="journey__cards journey__cards--key">
+                <div class="journey__card journey__card--pain">
+                  <h5>Pain points</h5>
+                  <p>‘Driving Directions’ is at the bottom of the page. Users might miss it if they don’t scroll all the way down.</p>
+                </div>
+                <div class="journey__card journey__card--req">
+                  <h5>Design requirements</h5>
+                  <p>Place the ‘Driving Directions’ button at the top of the page where users can easily find it.</p>
+                </div>
+              </div>
+              <details class="journey__more">
+                <summary>See full stage <span class="journey__more-hint">goal, touchpoints, actions, opportunity</span></summary>
+                <div class="journey__cards">
+                    <div class="journey__card">
+                      <h5>Goal</h5>
+                      <p>User finds a hike, opens the directions from the app, and shares the hike with her friends.</p>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Touchpoints</h5>
+                      <ul><li>‘Hiking Project’ app to a navigation app.</li><li>‘Hiking Project’ app to a messaging app to share with friends.</li></ul>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Actions</h5>
+                      <ul><li>Presses ‘Share’ on the trail page, which opens ways to send a message.</li><li>Scrolls to the bottom of the trail page and taps ‘Driving Directions’, then picks a navigation app.</li></ul>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Opportunity</h5>
+                      <p>Move ‘Driving Directions’ to the top of the page, where it’s easy to spot.</p>
+                    </div>
+                </div>
+              </details>
+            </section>
+            <section class="journey__panel" id="jp-resolution" data-stage="resolution" aria-label="Resolution">
+              <p class="journey__step">Stage 5 of 5 · Resolution</p>
+              <blockquote class="journey__quote">“I’m happy that I was able to find a hike and that it fit my activity level. I just wish it wasn’t so complicated!”</blockquote>
+              <div class="journey__cards journey__cards--key">
+                <div class="journey__card journey__card--pain">
+                  <h5>Pain points</h5>
+                  <p>The blue icon on grey has low colour contrast and can be hard to see.</p>
+                </div>
+                <div class="journey__card journey__card--req">
+                  <h5>Design requirements</h5>
+                  <p>Change the icon’s colour and make it bigger.</p>
+                </div>
+              </div>
+              <details class="journey__more">
+                <summary>See full stage <span class="journey__more-hint">goal, touchpoints, actions, opportunity</span></summary>
+                <div class="journey__cards">
+                    <div class="journey__card">
+                      <h5>Goal</h5>
+                      <p>User goes on the hike with friends and completes the whole trail, because it matched her needs.</p>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Touchpoints</h5>
+                      <ul><li>‘Hiking Project’ app to a navigation app.</li><li>‘Hiking Project’ app to a messaging app to share with friends.</li></ul>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Actions</h5>
+                      <p>Opens directions from the ‘Hiking Project’ app to navigate to the trail.</p>
+                    </div>
+                    <div class="journey__card">
+                      <h5>Opportunity</h5>
+                      <p>Change the icon’s colour and make it bigger.</p>
+                    </div>
+                </div>
+              </details>
+            </section>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" data-section="Develop" aria-labelledby="develop">
+        <h2 id="develop">Develop</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">With my research in mind, I narrowed in on the specific design changes the app needed and conducted user testing with paper prototypes.</span></p>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Paper prototypes</h3>
+            <p>I then built a low-fidelity paper prototype and tested it with users. Paper could only show how the app works one-handed, so for the vision-related changes I relied on my earlier research.</p>
+            <!-- Paper prototypes: hover over (or tap, or tab to) a + to read a note.
+                 Move a + with its --x / --y (position on that sketch, from the top-left).
+                 hot--right opens the note to the right of the +, hot--left to the left.
+                 Images are in images/hiking-project/paper-prototypes/. -->
+            <div class="sketches hotspots" data-hotspots>
+              <div class="sketches__row sketches__row--top">
+                <figure class="sketch sketch--phone-frame">
+                  <img src="images/hiking-project/paper-prototypes/phone-outline.png" alt="Hand-drawn phone frame with a bottom navigation bar: Explore, Areas, Record, Favorites and Account." loading="lazy">
+                  <div class="hot hot--right" data-hot="p1" style="--x: 39%; --y: 70%;">
+                    <button class="hot__btn" type="button" aria-expanded="false" aria-controls="pp-1" aria-describedby="pp-1">
+                      <span class="visually-hidden">Note 1: Icon changes</span>
+                    </button>
+                    <div class="hot__pop" id="pp-1" role="note">
+                      <h4 class="hot__title"><span class="todo">Icon changes</span></h4>
+                      <p>Explore icon changed from a magnifying glass to reduce user confusion. ‘Explore’ takes the user to the list of places, while ‘Search’ takes them to the search bar.</p>
+                    </div>
+                  </div>
+                </figure>
+                <figure class="sketch sketch--map-zoom">
+                  <img src="images/hiking-project/paper-prototypes/maps.png" alt="Hand-drawn map screen in three steps, zooming in from Toronto towards Niagara Falls. Each has a search bar at the top, Filter, info and location buttons on the right, and zoom buttons at the bottom left." loading="lazy">
+                  <div class="hot hot--right" data-hot="p2" style="--x: 24%; --y: 8%;">
+                    <button class="hot__btn" type="button" aria-expanded="false" aria-controls="pp-2" aria-describedby="pp-2">
+                      <span class="visually-hidden">Note 2: Search bar</span>
+                    </button>
+                    <div class="hot__pop" id="pp-2" role="note">
+                      <h4 class="hot__title"><span class="todo">Search bar</span></h4>
+                      <p>Search bar extending along top of phone and enlarged for ease of use.</p>
+                    </div>
+                  </div>
+                  <div class="hot hot--left" data-hot="p3" style="--x: 59%; --y: 69%;">
+                    <button class="hot__btn" type="button" aria-expanded="false" aria-controls="pp-3" aria-describedby="pp-3">
+                      <span class="visually-hidden">Note 3: Zooming function</span>
+                    </button>
+                    <div class="hot__pop" id="pp-3" role="note">
+                      <h4 class="hot__title"><span class="todo">Zooming function</span></h4>
+                      <p>‘+’ and ‘-’ buttons added to bottom left of screen as this is easier for users to access than bottom right. Allows users to zoom in and out more easily if one-handed.</p>
+                    </div>
+                  </div>
+                  <div class="hot hot--left" data-hot="p4" style="--x: 92%; --y: 53%;">
+                    <button class="hot__btn" type="button" aria-expanded="false" aria-controls="pp-4" aria-describedby="pp-4">
+                      <span class="visually-hidden">Note 4: Button placement</span>
+                    </button>
+                    <div class="hot__pop" id="pp-4" role="note">
+                      <h4 class="hot__title"><span class="todo">Button placement</span></h4>
+                      <p>‘Filter’, ‘information’ and ‘arrow’ buttons left at top right as this is easier for users to reach. 4/5 users were able to find ‘Filter’ button easily.</p>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+              <div class="sketches__row sketches__row--bottom">
+                <figure class="sketch sketch--areas-downloaded">
+                  <img src="images/hiking-project/paper-prototypes/areas.png" alt="Hand-drawn Areas screen: a search bar, Ontario under Downloaded Areas with Go to, Delete and Upload options, then U.S. areas with Download buttons." loading="lazy">
+                  <div class="hot hot--right" data-hot="p5" style="--x: 83%; --y: 2%;">
+                    <button class="hot__btn" type="button" aria-expanded="false" aria-controls="pp-5" aria-describedby="pp-5">
+                      <span class="visually-hidden">Note 5: Search bar</span>
+                    </button>
+                    <div class="hot__pop" id="pp-5" role="note">
+                      <h4 class="hot__title"><span class="todo">Search bar</span></h4>
+                      <p>‘Search’ bar remains up top so users can quickly find desired location.</p>
+                    </div>
+                  </div>
+                  <div class="hot hot--right" data-hot="p6" style="--x: 91%; --y: 53%;">
+                    <button class="hot__btn" type="button" aria-expanded="false" aria-controls="pp-6" aria-describedby="pp-6">
+                      <span class="visually-hidden">Note 6: Enlarge buttons</span>
+                    </button>
+                    <div class="hot__pop" id="pp-6" role="note">
+                      <h4 class="hot__title"><span class="todo">Enlarge buttons</span></h4>
+                      <p>Download button made bigger so users can see it better.</p>
+                    </div>
+                  </div>
+                </figure>
+                <figure class="sketch sketch--trail-page">
+                  <img src="images/hiking-project/paper-prototypes/about-trail.png" alt="Hand-drawn trail page with Back and Get Directions at the top, then the trail name, rating, distance, review, elevation chart, conditions and description." loading="lazy">
+                  <div class="hot hot--left" data-hot="p7" style="--x: 54%; --y: 11%;">
+                    <button class="hot__btn" type="button" aria-expanded="false" aria-controls="pp-7" aria-describedby="pp-7">
+                      <span class="visually-hidden">Note 7: Button placement</span>
+                    </button>
+                    <div class="hot__pop" id="pp-7" role="note">
+                      <h4 class="hot__title"><span class="todo">Button placement</span></h4>
+                      <p>‘Get Directions’ button added to top as well as bottom of page for quick access</p>
+                    </div>
+                  </div>
+                  <!-- <div class="hot hot--left" data-hot="p8" style="--x: 86%; --y: 50%;">
+                    <button class="hot__btn" type="button" aria-expanded="false" aria-controls="pp-8" aria-describedby="pp-8">
+                      <span class="visually-hidden">Note 8: Reviews and elevation</span>
+                    </button>
+                    <div class="hot__pop" id="pp-8" role="note">
+                      <h4 class="hot__title"><span class="todo">Reviews and elevation</span></h4>
+                      <p><span class="todo">What you tested here and what users said.</span></p>
+                    </div>
+                  </div> -->
+                </figure>
+              </div>
+              <p class="hotspots__hint">Hover over each <span class="hotspots__plus" aria-hidden="true">+</span> to read the notes</p>
+            </div>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Style guide</h3>
+            <p><span class="todo">After reviewing the results from my user research and user testing, I created a style guide to guide the design process.</span></p>
+            <p>As many of the colours passed WCAG 2.1 AA accessibility standards, I was able to use them throughout the design. I did change placement of buttons, enlarged font, and created more contrast between colours.</p>
+            <!-- Style guide: each tile is one graphic exported from Figma
+                 (in images/hiking-project/design-system/). -->
+            <div class="ds">
+              <!-- Colours: change a colour by editing its --swatch and the hex text. -->
+              <figure class="ds__tile ds__tile--colours">
+                <figcaption class="ds__label">Colours</figcaption>
+                <div class="palette">
+                  <div class="palette__group">
+                    <h4 class="palette__title">Surface colours</h4>
+                    <p class="palette__note">Applied to backgrounds and containers to create clarity and hierarchy.</p>
+                    <ul class="swatches">
+                      <li class="swatch swatch--light" style="--swatch: #FFFEFE;">
+                        <span class="swatch__chip" aria-hidden="true"></span>
+                        <span class="swatch__label">
+                          <span class="swatch__name">Off-white</span>
+                          <span class="swatch__hex">#FFFEFE</span>
+                        </span>
+                      </li>
+                      <li class="swatch" style="--swatch: #010101;">
+                        <span class="swatch__chip" aria-hidden="true"></span>
+                        <span class="swatch__label">
+                          <span class="swatch__name">Dark charcoal</span>
+                          <span class="swatch__hex">#010101</span>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="palette__group">
+                    <h4 class="palette__title">Primary colours</h4>
+                    <p class="palette__note">Used to define the brand’s core identity and for main actions throughout the interface.</p>
+                    <ul class="swatches">
+                      <li class="swatch" style="--swatch: #598F00;">
+                        <span class="swatch__chip" aria-hidden="true"></span>
+                        <span class="swatch__label">
+                          <span class="swatch__name">Leaf green</span>
+                          <span class="swatch__hex">#598F00</span>
+                        </span>
+                      </li>
+                      <li class="swatch" style="--swatch: #3178AE;">
+                        <span class="swatch__chip" aria-hidden="true"></span>
+                        <span class="swatch__label">
+                          <span class="swatch__name">Cool blue</span>
+                          <span class="swatch__hex">#3178AE</span>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </figure>
+              <figure class="ds__tile ds__tile--wide">
+                <figcaption class="ds__label">Typefaces</figcaption>
+                <img src="images/hiking-project/design-system/typefaces.svg" alt="Three typefaces: Crimson Text, SF Pro and Sofia Sans Condensed, each shown with its alphabet and its Bold, SemiBold, Medium and Regular weights." loading="lazy">
+              </figure>
+              <figure class="ds__tile ds__tile--wide">
+                <figcaption class="ds__label">Type scale</figcaption>
+                <img src="images/hiking-project/design-system/type-scale.svg" alt="Type scale. Heading 1: Crimson Text Bold, 25px. Heading 2: SF Pro Bold, 21px. Both at 1.2 times line height. Heading 3: SF Pro Semibold, 18px. Body: SF Pro Regular, 16px. Button text: SF Pro Semibold, 14px. Map numbers: Sofia Sans Condensed Medium, 14px. Input text: SF Pro Regular, 14px. Input label and tab label: SF Pro Medium, 14px. All at 1.4 times line height." loading="lazy">
+              </figure>
+              <figure class="ds__tile ds__tile--tall">
+                <figcaption class="ds__label">Layout grid</figcaption>
+                <img src="images/hiking-project/design-system/layout-grid.svg" alt="Layout grid for a 390 by 844 pixel screen: four 76px columns with 16px margins on each side." loading="lazy">
+              </figure>
+              <figure class="ds__tile">
+                <figcaption class="ds__label">Spacing</figcaption>
+                <img src="images/hiking-project/design-system/spacing.svg" alt="Spacing scale: 4, 8, 12, 16, 20, 24, 32, 40 and 48 pixels." loading="lazy">
+              </figure>
+              <figure class="ds__tile">
+                <figcaption class="ds__label">Corner radius</figcaption>
+                <img src="images/hiking-project/design-system/corner-radius.svg" alt="Corner radius: square corners or a 4px radius." loading="lazy">
+              </figure>
+              <figure class="ds__tile">
+                <figcaption class="ds__label">Shadow</figcaption>
+                <img src="images/hiking-project/design-system/shadow.svg" alt="Modal shadow: X 0, Y 4, blur 16, colour #000000." loading="lazy">
+              </figure>
+              <figure class="ds__tile ds__tile--wide ds__tile--fit">
+                <figcaption class="visually-hidden">CTA buttons</figcaption>
+                <img src="images/hiking-project/design-system/cta-buttons.svg" width="540" height="300" alt="Primary call-to-action buttons in cool blue, large and small: default, pressed (light blue with blue text) and disabled (grey)." loading="lazy">
+              </figure>
+              <figure class="ds__tile ds__tile--wide ds__tile--fit">
+                <figcaption class="visually-hidden">Secondary buttons</figcaption>
+                <img src="images/hiking-project/design-system/secondary-buttons.svg" width="540" height="272" alt="Secondary buttons, large and small: default (dark charcoal), pressed (white with blue text) and disabled (grey)." loading="lazy">
+              </figure>
+              <figure class="ds__tile ds__tile--wide ds__tile--fit">
+                <figcaption class="visually-hidden">Icons</figcaption>
+                <img src="images/hiking-project/design-system/icons.svg" width="524" height="244" alt="Icon rules: 30px live area, 6px safe area, 36px full size. Essential icons: record, back, forward, location pin, search, navigate, download, share, star, heart, map and person." loading="lazy">
+              </figure>
+              <figure class="ds__tile ds__tile--wide ds__tile--fit">
+                <figcaption class="visually-hidden">Icon buttons</figcaption>
+                <img src="images/hiking-project/design-system/icon-buttons.svg" width="250" height="181" alt="Icon buttons in grey for default and blue when selected: star, map, heart and person." loading="lazy">
+              </figure>
+              <figure class="ds__tile ds__tile--wide ds__tile--fit">
+                <figcaption class="visually-hidden">Icons and text</figcaption>
+                <img src="images/hiking-project/design-system/icons-and-text.svg" width="300" height="103" alt="Icon with a text label underneath, in grey for default and blue when selected." loading="lazy">
+              </figure>
+              <figure class="ds__tile ds__tile--wide ds__tile--fit">
+                <figcaption class="visually-hidden">Select indicators</figcaption>
+                <img src="images/hiking-project/design-system/select-indicators.svg" width="220" height="103" alt="Checkbox, empty and checked in black, and radio button, empty and selected in blue." loading="lazy">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" data-section="Deliver" aria-labelledby="deliver">
+        <h2 id="deliver">Deliver</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">The final design addresses the key issues identified in the research and testing phases, and was created as a prototype in Protopie.</span></p>
+
+          <div class="cs-sub proto">
+            <h3 class="cs-sub__title">Solution</h3>
+            <p>Certain buttons are larger and contrast between colours is improved. Buttons have also been added, such as the large search bar across the top of the screen and the zoom in and out feature.</p>
+            <!-- Protopie prototype: paste Protopie's embed code (an <iframe>) inside
+                 proto__frame in place of the placeholder, and remove its width/height. -->
+            <div class="proto__frame">
+              <iframe src="https://sheridan.protopie.cloud/p/a7b1785088936c1588417d8e?ui=true&amp;scaleToFit=true&amp;enableHotspotHints=true&amp;cursorType=touch&amp;mockup=true&amp;bgColor=%23F5F5F5&amp;bgImage=undefined&amp;playSpeed=1" title="Interactive Protopie prototype of the redesigned hiking app" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <p class="proto__link"><a href="https://sheridan.protopie.cloud/p/a7b1785088936c1588417d8e?ui=true&amp;scaleToFit=true&amp;enableHotspotHints=true&amp;cursorType=touch&amp;mockup=true&amp;bgColor=%23F5F5F5&amp;bgImage=undefined&amp;playSpeed=1" target="_blank" rel="noopener noreferrer">Open the prototype in a new tab</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" data-section="Reflection" aria-labelledby="reflection">
+        <h2 id="reflection">Reflection</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">What I learned from this experience.</span></p>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title"><span class="todo">User testing is everything</span></h3>
+            <p>This project helped me better understand standards and guidelines for accessible design. However, the limited availability of users made it challenging for me to gather sufficient feedback about the changes I made. Even though my modifications were based in academic research, taking into account the feedback from real people's experiences would have provided a more comprehensive understanding of the design's effectiveness.</p>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title"><span class="todo">What is accessibility?</span></h3>
+            <p>When I started this project, my focus was solely on physical disabilities. However, this project taught me to explore and consider how the information around us affects our cognitive and sensory abilities. I've often been overwhelmed by technology myself, and have had to help others navigate complex information in the hospital setting. This project has ingrained in me the importance of considering these diverse needs of all users when designing (digital) experiences.</p>
+          </div>
+
+          <!-- <div class="cs-sub">
+            <h3 class="cs-sub__title"><span class="todo">Reflection 3</span></h3>
+            <p><span class="todo">What you’d do differently next time.</span></p>
+          </div> -->
+        </div>
+      </section>
+
+      <nav class="cs-next" aria-label="Next case study">
+        <div>
+          <p>Next case study</p>
+          <a class="cs-next__title" href="fitness-app.html">Strava App Redesign</a>
+        </div>
+        <a class="pill" href="fitness-app.html">Read case study <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"/></svg></a>
+      </nav>
+      </div>
+    </main>
+
+    <footer class="site-footer wrap band band--night">
+      <p>© <span data-year>2026</span> Millie Dayaram</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Millie Dayaram — Interaction Designer</title>
+  <meta name="description" content="Portfolio of Millie Dayaram, an interaction design student and former registered nurse designing calm, clear experiences for people under pressure.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="grid-lines" aria-hidden="true"></div>
+
+  <aside class="rail" aria-hidden="true">
+    <span class="rail__label"><strong>Millie</strong> Dayaram</span>
+    <span class="rail__label" data-rail-section>Intro</span>
+    <span class="rail__section">2026</span>
+  </aside>
+
+  <div class="page">
+    <header class="site-header wrap">
+      <a class="site-header__name" href="index.html">Millie Dayaram</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#approach">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <!-- Put your resume PDF in the main folder and update the link -->
+          <li><a href="resume.pdf">Resume</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- ============ Intro ============ -->
+      <section class="hero wrap" id="intro" data-section="Intro" aria-labelledby="intro-title">
+        <h1 class="hero__statement" id="intro-title" data-typewriter>
+          Hey there, I’m Millie <img class="hero__portrait" src="images/millie-pill.jpg" alt="Portrait of Millie smiling" width="577" height="600"> an interaction designer who spent years as a nurse helping people navigate complex information. Now, I get to design experiences that make <a href="#approach">complex things feel simple</a>.
+        </h1>
+        <div class="hero__meta">
+          <a class="pill" href="#work">
+            See my work
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"/></svg>
+          </a>
+          <p><span class="status-dot" aria-hidden="true"></span>3rd Year Honours Bachelor of Interaction Design @ Sheridan College • Open to Summer 2027 UX internships</p>
+        </div>
+      </section>
+
+      <!-- ============ Work ============ -->
+      <section class="section wrap" id="work" data-section="Work" aria-labelledby="work-title">
+        <div class="section-title">
+          <h2 id="work-title">Selected work</h2>
+          <span>2 case studies</span>
+        </div>
+
+        <!-- Project 1 -->
+        <article class="project">
+          <div class="project__text">
+            <h3 class="project__title"><a href="fitness-app.html">Fitness App Redesign</a></h3>
+            <p class="project__when">Mar–Apr 2026 · Privacy and data transparency · Figma</p>
+            <div class="project__link-row">
+              <a class="pill" href="fitness-app.html">
+                Read case study
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"/></svg>
+              </a>
+            </div>
+            <dl class="pnr">
+              <dt>Problem</dt>
+              <dd>Data usage in Strava can be difficult to find. With every privacy setting set to 'Default', users are at risk of giving away more than they realize.</dd>
+              <dt>Needs</dt>
+              <dd><span class="todo">Clarity on how the app is using their data and the opportunity to control how they share their data.</span></dd>
+              <dt>Solution</dt>
+              <dd><span class="todo">Users are provided with the opportunity to easily access and understand their privacy settings right from the beginning.</span></dd>
+            </dl>
+          </div>
+          <div class="project__media">
+            <img class="project__img" src="images/strava/strava-iphone-mockup-shadow.png" alt="Two iPhones showing the redesigned Strava app: the Strava splash screen, and the Custom privacy options screen from the new onboarding." width="1359" height="1840">
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project project--flip">
+          <div class="project__text">
+            <h3 class="project__title"><a href="hiking-app.html">Hiking App Redesign</a></h3>
+            <p class="project__when">Sep–Dec 2025 · Accessibility · Protopie</p>
+            <div class="project__link-row">
+              <a class="pill" href="hiking-app.html">
+                Read case study
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"/></svg>
+              </a>
+            </div>
+            <dl class="pnr">
+              <dt>Problem</dt>
+              <dd>The Hiking Project's design excludes users with limited hand use and/or vision.</dd>
+              <dt>Needs</dt>
+              <dd><span class="todo">Features that are designed for users with situational, temporary or permanent limitations, specifically when it comes to vision and hand movement.</span></dd>
+              <dt>Solution</dt>
+              <dd><span class="todo">Redesigning the app with improved colour contrast, larger text options, and improved button placement.</span></dd>
+            </dl>
+          </div>
+          <div class="project__media">
+            <img class="project__img" src="images/hiking-project/hiking-project-iphone-mockup.png" alt="The redesigned hiking app on an iPhone, with higher-contrast colours, larger text and easier-to-reach buttons.">
+          </div>
+        </article>
+      </section>
+
+      <!-- ============ Approach / About ============ -->
+      <section class="section wrap" id="approach" data-section="About" aria-labelledby="approach-title">
+        <div class="section-title">
+          <h2 id="approach-title">How I design</h2>
+          <span>Nursing → Interaction Design</span>
+        </div>
+
+        <div class="approach">
+          <div>
+            <p class="approach__lead">Working closely with people in vulnerable situations gave me a unique perspective into how people think, work and make decisions.</p>
+            <div class="approach__body">
+              <p>In the healthcare world, decision making needs to be quick and efficient. Unfortunately, this comes with a lot of stress and it's easy for people to feel lost in the amount of information thrown at them. Once I started noticing this in my job, I started seeing it in other places too – people attempting to navigate through systems that felt like they had been designed with little to no understanding of what they actually needed.</p>
+              <p>Maintaining a willingness to learn and be curious is <strong>key</strong> when it comes to understanding the world around us. When I design, my goal is for people to feel this human connection beyond the screen. It goes beyond stylish aesthetics or what's popular. It's about creating spaces that demonstrate empathy, understanding and trust, and is grounded in real user experiences.</p>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <p class="accordion__intro">What I bring to a team</p>
+            <details open>
+              <summary>
+                Understanding the User
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M3 6l5 5 5-5"/></svg>
+              </summary>
+              <p>Years of helping people navigate the unknowns of healthcare taught me the importance of speaking their language and understanding their needs.</p>
+            </details>
+            <details>
+              <summary>
+                It takes a village
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M3 6l5 5 5-5"/></svg>
+              </summary>
+              <p>Design is a multidisciplinary effort that requires collaboration and the willingness to be open and learn from each other. I know I don't know everything, and I value the knowledge and skills of those around me.
+            
+              </p>
+            </details>
+            <details>
+              <summary>
+                Banding together
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M3 6l5 5 5-5"/></svg>
+              </summary>
+              <p>Supporting each other and working together is how we create the best experiences for people, including ourselves!</p>
+            </details>
+            </div>
+        </div>
+      </section>
+
+      <!-- ============ Tools ============
+           Grouped list of tools. Add or remove a <li> to change what's shown. -->
+      <!-- <section class="section wrap" id="tools" data-section="Tools" aria-labelledby="tools-title">
+        <div class="section-title">
+          <h2 id="tools-title">Tools</h2>
+          <span>What I design and build with</span>
+        </div>
+        <div class="tools">
+          <div class="tools__group">
+            <h3 class="tools__label">Design &amp; prototyping</h3>
+            <ul class="tools__list">
+              <li>Figma</li>
+              <li>Protopie</li>
+              <li>Framer</li>
+            </ul>
+          </div>
+          <div class="tools__group">
+            <h3 class="tools__label">Code</h3>
+            <ul class="tools__list">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>GitHub</li>
+            </ul>
+          </div>
+          <div class="tools__group">
+            <h3 class="tools__label">Website builders</h3>
+            <ul class="tools__list">
+              <li>Wix</li>
+              <li>Framer</li>
+            </ul>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- ============ Beyond design ============ -->
+      <section class="section wrap band band--lime" id="life" data-section="Life" aria-labelledby="life-title">
+        <div class="section-title">
+          <h2 id="life-title">Beyond design</h2>
+          <span>The stuff that keeps me going</span>
+        </div>
+
+        <p class="life__intro">When I’m not in school or at work, I’m probably outside, playing music, or making something with my hands. There’s nothing more satisfying than wearing or using something I made myself.</p>
+
+        <!-- Photo gallery
+             To add a photo: replace the <div class="ph">…</div> inside an item with
+               <img src="images/life-1.jpg" alt="Describe the photo">
+             data-tag   = which filter it belongs to: food, fun or travel
+             data-size  = optional: "tall" (portrait photos) or "wide" (landscape photos)
+             Copy a whole <li> … </li> to add more photos. -->
+        <div class="gallery">
+          <div class="gallery__filters" role="group" aria-label="Filter photos">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">Everything</button>
+          <button type="button" class="chip" data-filter="food" aria-pressed="false">Food</button>
+          <button type="button" class="chip" data-filter="fun" aria-pressed="false">Fun</button>
+          <button type="button" class="chip" data-filter="travel" aria-pressed="false">Travel</button>
+          </div>
+          <p class="visually-hidden" aria-live="polite" data-gallery-status></p>
+          <ul class="gallery__grid">
+          <li class="gallery__item" data-tag="travel" data-size="tall">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/algonquin-camping.png" alt="Camping in Algonquin"></div>
+              <span class="gallery__caption"><span class="todo">Camping in Algonquin Provincial Park</span></span>
+            </button>
+          </li>
+          <li class="gallery__item" data-tag="travel">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/australia.png" alt="Friends in Australia"></div>
+              <span class="gallery__caption"><span class="todo">Newcastle, Australia</span></span>
+            </button>
+          </li>
+          <li class="gallery__item" data-tag="food">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/coffee.png" alt="At a Toronto coffee shop"></div>
+              <span class="gallery__caption"><span class="todo">At a coffee shop</span></span>
+            </button>
+          </li>
+          <li class="gallery__item" data-tag="travel" data-size="wide">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/pancake-bay-2.JPG" alt="Pancake Bay Beach"></div>
+              <span class="gallery__caption"><span class="todo">Pancake Bay Beach</span></span>
+            </button>
+          </li>
+          <li class="gallery__item" data-tag="fun">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/me_adam.png" alt="Millie and Adam"></div>
+              <span class="gallery__caption"><span class="todo">Exploring Toronto</span></span>
+            </button>
+          </li>
+          <li class="gallery__item" data-tag="fun" data-size="tall">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/tame-impala.png" alt="At a Tame Impala concert"></div>
+              <span class="gallery__caption"><span class="todo">Seeing Tame Impala live</span></span>
+            </button>
+          </li>
+          <li class="gallery__item" data-tag="travel">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/india.png" alt="Gas station in India"></div>
+              <span class="gallery__caption"><span class="todo">Travelling in India</span></span>
+            </button>
+          </li>
+          <li class="gallery__item" data-tag="fun" data-size="wide">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/port-colbourne.png" alt="A beach in Port Colborne"></div>
+              <span class="gallery__caption"><span class="todo">At a beach in Port Colborne</span></span>
+            </button>
+          </li>
+          <li class="gallery__item" data-tag="food">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/westcott.JPG" alt="At Westcott Winery"></div>
+              <span class="gallery__caption"><span class="todo">At Westcott Winery</span></span>
+            </button>
+          </li>
+          <li class="gallery__item" data-tag="travel">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/jasper.JPG" alt="Rocky Mountains in Jasper"></div>
+              <span class="gallery__caption"><span class="todo">Rocky Mountains in Jasper</span></span>
+            </button>
+          </li>
+          <li class="gallery__item" data-tag="travel">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/pancake-bay.JPG" alt="Lake Superior"></div>
+              <span class="gallery__caption"><span class="todo">Visiting Lake Superior</span></span>
+            </button>
+          </li>
+          <li class="gallery__item" data-tag="travel">
+            <button class="gallery__open" type="button">
+              <div class="ph"><img src="images/about/jasper-2.png" alt="Selfie in Jasper"></div>
+              <span class="gallery__caption"><span class="todo">Visiting Jasper National Park for the first time</span></span>
+            </button>
+          </li>
+          </ul>
+        </div>
+
+        <dialog class="viewer" aria-label="Photo viewer">
+          <div class="viewer__inner">
+            <div class="viewer__media" data-viewer-media></div>
+            <div class="viewer__bar">
+              <p class="viewer__caption" data-viewer-caption></p>
+              <div class="viewer__controls">
+                <span class="viewer__count" data-viewer-count></span>
+                <button type="button" class="viewer__btn" data-viewer-prev aria-label="Previous photo">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M10 3L5 8l5 5"/></svg>
+                </button>
+                <button type="button" class="viewer__btn" data-viewer-next aria-label="Next photo">
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M6 3l5 5-5 5"/></svg>
+                </button>
+                <button type="button" class="pill viewer__close" data-viewer-close>Close</button>
+              </div>
+            </div>
+          </div>
+        </dialog>
+
+        <h3 class="life__subhead">Where I find inspiration</h3>
+        <div class="inspo">
+          <article>
+            <h4>Connecting with people</h4>
+            <p>I’m always inspired by how people are creating and growing, and I love hearing what they’re working on or thinking about. Good food and good conversation are my love language. Also, I have no shame in scrolling endlessly watching people flip houses and furniture.</p>
+          </article>
+          <article>
+            <h4>Touching grass</h4>
+            <p>Moving my body is how I refresh my brain. Hearing the birds and feeling the sun on my skin brings me a sense of peace and refreshes me like nothing else can.</p>
+          </article>
+          <article>
+            <h4>Investing in myself</h4>
+            <p>Between school and work, it’s easy for the time to quickly disappear. I’ve worked hard to find a balance between work and play, and to keep doing things that bring me joy.</p>
+          </article>
+        </div>
+
+        <h3 class="life__subhead">Lately</h3>
+        <dl class="lately">
+          <div>
+            <dt>Reading</dt>
+            <dd>Working through the Dungeon Crawler Carl series, plus whatever my book study is on
+              <!-- Covers: replace a <span class="cover cover--empty">…</span> with
+                    <img class="cover" src="images/lately/dungeon-crawler-carl.jpg" alt="Dungeon Crawler Carl book cover">
+                   Copy a whole <li> … </li> to add more. -->
+              <ul class="covers">
+                <li><img class="cover" src="images/dungeon-crawler-carl.jpeg" alt="Dungeon Crawler Carl book cover"></li>
+                <!-- <li><span class="cover cover--empty">Book study pick</span></li> -->
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>Playing</dt>
+            <dd>Guitar, piano and violin</dd>
+          </div>
+          <div>
+            <dt>Making</dt>
+            <dd>Getting back into knitting and sewing (yay!)</dd>
+          </div>
+          <div>
+            <dt>Watching</dt>
+            <dd>Movies and shows with my guy. All-time favourites: Arrival, Chernobyl, Mindhunter, Parks and Rec, Arrested Development
+              <ul class="covers">
+                <li><img class="cover" src="images/arrival.jpg" alt="Arrival movie cover"></li>
+                <li><img class="cover" src="images/chernobyl.png" alt="Chernobyl TV show cover"></li>
+                <li><img class="cover" src="images/mindhunter.png" alt="Mindhunter TV show cover"></li>
+                <li><img class="cover" src="images/parks-and-rec.png" alt="Parks and Rec TV show cover"></li>
+                <li><img class="cover" src="images/arrested-development.png" alt="Arrested Development TV show cover"></li>
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>Exploring</dt>
+            <dd>The beautiful Niagara Region</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- ============ Background ============ -->
+      <section class="section wrap" id="background" data-section="Background" aria-labelledby="background-title">
+        <div class="section-title">
+          <h2 id="background-title">Background</h2>
+          <span>Niagara Region, Ontario</span>
+        </div>
+        <div class="background">
+          <div>
+            <h3>Education</h3>
+            <ul class="entries">
+              <li>
+                <span class="what">Honours Bachelor of Interaction Design</span>
+                <span class="where">Sheridan College | GPA 3.6/4.0</span>
+                <span class="when">Expected 2028</span>
+              </li>
+              <li>
+                <span class="what">Honours Bachelor of Nursing</span>
+                <span class="where">Brock University</span>
+                <span class="when">2017</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3>Experience</h3>
+            <ul class="entries">
+              <li>
+                <span class="what">Registered Nurse</span>
+                <span class="where">Niagara Health, Niagara Region</span>
+                <span class="when"><span class="todo">2024-Present</span></span>
+              </li>
+                <li>
+                <span class="what">Registered Nurse</span>
+                <span class="where">Meridia Medical, Toronto</span>
+                <span class="when"><span class="todo">2023-2024</span></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Contact ============ -->
+      <section class="section wrap band band--night" id="contact" data-section="Contact" aria-labelledby="contact-title">
+        <h2 class="contact__big" id="contact-title">Let’s talk.</h2>
+        <div class="contact__grid">
+          <div>
+            <h3>About</h3>
+            <p>Millie Dayaram<br>Interaction Designer<br>Niagara Region, ON</p>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <ul>
+              <!-- Add the email you want employers to use -->
+              <li><a href="mailto:milliedayaram@gmail.com">milliedayaram@gmail.com</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Elsewhere</h3>
+            <ul>
+              <li><a href="https://www.linkedin.com/in/millie-dayaram">LinkedIn</a></li>
+              <li><a href="https://github.com/millivanillie">GitHub</a></li>
+              <li><a href="resume.pdf">Resume (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer wrap band band--night">
+      <p>© <span data-year>2026</span> Millie Dayaram</p>
+      <!-- <p>Designed and coded by me in VS Code</p> -->
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

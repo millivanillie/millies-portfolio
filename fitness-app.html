@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fitness App Redesign — Millie Dayaram</title>
+  <meta name="description" content="Redesigning privacy settings so people can see and control what a fitness app does with their data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="grid-lines" aria-hidden="true"></div>
+
+  <aside class="rail" aria-hidden="true">
+    <span class="rail__label"><strong>Millie</strong> Dayaram</span>
+    <span class="rail__label" data-rail-section>Overview</span>
+    <span class="rail__section">Fitness App</span>
+  </aside>
+
+  <div class="page">
+    <header class="site-header wrap">
+      <a class="site-header__name" href="index.html">Millie Dayaram</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html#work" aria-current="page">Work</a></li>
+          <li><a href="index.html#approach">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="resume.pdf">Resume</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="wrap cs-layout">
+      <!-- Case study contents: stays beside the page as you scroll and highlights
+           the section you're reading. Each link points to a section's id. -->
+      <nav class="toc" aria-label="Case study contents">
+        <p class="toc__title">tl;dr</p>
+        <ol class="toc__list">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#discover">Discover</a></li>
+          <li><a href="#define">Define</a></li>
+          <li><a href="#develop">Develop</a></li>
+          <li><a href="#deliver">Deliver</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+          <li><a href="#reflection">Reflection</a></li>
+        </ol>
+      </nav>
+
+      <div class="cs-body">
+      <section class="cs-hero" id="overview" data-section="Overview" aria-labelledby="cs-title">
+        <div class="cs-hero__text">
+          <h1 class="cs-hero__title" id="cs-title">Strava App Redesign</h1>
+          <p class="cs-hero__summary"><span class="todo">Redesigning privacy settings so people can see and control what a fitness app does with their data.</span></p>
+          <a class="pill pill--quiet" href="index.html#work">Back to all work</a>
+        </div>
+        <div class="cs-hero__media">
+          <img class="cs-hero__img" src="images/strava/strava-iphone-mockup.png" alt="The redesigned Strava app shown on an iPhone.">
+        </div>
+      </section>
+
+      <dl class="cs-facts">
+        <div><dt>Role</dt><dd>Solo Project</dd></div>
+        <div><dt>Timeline</dt><dd>4 weeks</dd></div>
+        <div><dt>Tool</dt><dd>Figma</dd></div>
+        <div><dt>Methods</dt><dd>User Research<br>Usability Testing<br>Prototyping<br>UI/UX</dd></div>
+      </dl>
+
+      <section class="cs-section" data-section="Challenge" aria-labelledby="problem">
+        <h2 id="problem">The challenge</h2>
+        <div>
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Problem</h3>
+            <p>Strava is a widely used fitness tracking and networking app with 195 million users across 185 countries. The company relies heavily on user-generated content. However, finding how they use this data is buried in settings menus that are <strong>not intuitive to the user experience.</strong></p>
+            <p>Strava is given rights via its Terms of Service (ToS) to use user-posted content and retain data even after account deletion, which is <strong>not made clear</strong> during sign-up. As users share personal information about this app, such as location, images, and activity data, they <strong>may not fully understand the extent</strong> to which their information is being used.</p>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">The User Experience</h3>
+            <p>During the onboarding process, users are told in small greyed out lettering that their privacy settings are set to <strong>'public' by default</strong>. After conducting independent research through external sources and interviews, it appeared that <strong>many people forgot</strong> to personalize their privacy settings until there was an incident</strong> (ex. one person had a stranger comment on her workout).</p>
+          
+             <!-- Before screens: put each image straight in the <figure> (not inside a
+                 <div class="ph">), so it isn't wrapped in the placeholder frame -->
+            <ul class="screens" aria-label="Strava screens before the redesign">
+              <li>
+                <figure>
+                  <img class="screens__shot" src="images/strava/fitness-app-before-1.png" alt="Strava sign-up screen asking “What’s your name?”, with a small note under the fields saying your profile is public by default." width="302" height="628" loading="lazy">
+                  <figcaption>Disclaimer that information is public by default is small and can be hard to read.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img class="screens__shot" src="images/strava/fitness-app-before-2.png" alt="Strava’s Product Improvements screen, with data sharing for community features and AI switched on by default." width="302" height="628" loading="lazy">
+                  <figcaption>Everyone can see your activities, leaderboards, and any other Strava features.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img class="screens__shot" src="images/strava/fitness-app-before-3.png" alt="Strava’s Activities privacy screen, with Everyone selected as the default audience for your activities." width="302" height="628" loading="lazy">
+                  <figcaption>Users' content is used to improve the app. It's also sold to governments to improve their city planning.</figcaption>
+                </figure>
+              </li>
+            </ul>
+
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Solution</h3>
+            <!-- Video: plays on its own (muted, looping) when it scrolls into view and
+                 pauses when it scrolls away. To swap it, export an .mp4 (H.264) to
+                 images/strava/ and change the src below. -->
+            <figure class="cs-video cs-video--inline">
+              <div class="cs-video__stage">
+                <video class="cs-video__player" data-autoplay-on-scroll
+                       muted loop playsinline preload="metadata"
+                       poster="images/strava/strava-onboarding-poster.jpg"
+                       width="720" height="1418"
+                       aria-label="Walkthrough of the redesigned Strava sign-up prototype: the profile is private by default, then sign-up steps for choosing who sees your activities and whether to share photos on public routes.">
+                  <source src="images/strava/strava-onboarding.mp4" type="video/mp4">
+                </video>
+                <button class="pill cs-video__toggle" type="button" data-video-toggle hidden>
+                  <span data-video-toggle-label>Pause video</span>
+                </button>
+              </div>
+              <figcaption class="cs-video__caption">Final design created as a prototype in Figma</figcaption>
+            </figure>
+
+            <p>The redesigned flow increased feelings of autonomy for 80% of users. Users also felt they had greater control over their content, shifting their perception from feeling like victims of the system to active stakeholders.</p>
+
+            <!-- Three solution highlights. Edit the titles and sentences to match your work. -->
+            <ul class="highlights">
+              <li>
+                <h4 class="highlights__title">Onboarding</h4>
+                <p>Users can set privacy settings during the onboarding process, making them aware of what and how Strava is using their data from the very beginning.</p>
+              </li>
+              <li>
+                <h4 class="highlights__title">More Controls</h4>
+                <p>Users are given more options when deciding who can see their content. Adding an 'Only You' option to all content.</p>
+              </li>
+              <li>
+                <h4 class="highlights__title">Private By Default</h4>
+                <p>All privacy settings are private by default, instead of public.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" data-section="Discover" aria-labelledby="discover">
+        <h2 id="discover">Discover</h2>
+        <div>
+          <!-- Overview: 1–3 sentences on what you set out to learn and how -->
+          <p class="cs-lead"><span class ="todo">Understanding the link between users' willingness to share data and the apps they adopt</span></p>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Empathy interviews</h3>
+            <p>In order to understand how users engaged with privacy settings on Strava, I conducted empathy interviews with four participants to gain qualitative insight into their perceptions and behaviours surrounding data privacy.</p>
+            <!-- <div class="ph ph--wide">Interview photo or notes · images/strava/discover-interviews.jpg</div> -->
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Participants</h3>
+            <p>I conducted interviews with 4 participants. Interviews were semi-structured with no fixed script. Each interview was approximately 30-45 minutes long.</p>
+            <p><span>Due to time constraints, I was only able to interview subjects within a specific demographic. However, if given more time, I would hope to interview more people across a broad spectrum of ages and experience to better reflect Strava’s user demographic as well as the general public's view of data transparency within fitness tracking apps.</span></p>
+            <!-- One card per participant. Copy a <li> … </li> to add more, or delete extras. -->
+            <ul class="people">
+              <li>
+                <p class="people__name">P1</p>
+                <p>26yo female, uses Strava occasionally.</p>
+              </li>
+              <li>
+                <p class="people__name">P2</p>
+                <p>26yo male, uses Strava 1‑2 times per week.</p>
+              </li>
+              <li>
+                <p class="people__name">P3</p>
+                <p>32yo female, uses a Samsung health app to track fitness. Has never used Strava.</p>
+              </li>
+              <li>
+                <p class="people__name">P4</p>
+                <p>31yo male, uses Apple Watch to track fitness. Has never used Strava.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Insights</h3>
+            <p>Once the onboarding process was complete, it never crossed their minds to locate them, even though the setup had very little to do with setting privacy preferences. One user thought the company would <strong>automatically ask them for permission</strong> if they wanted to make something public. Another user never thought about it because they rarely went to the 'Settings' menu.</p>
+            <!-- Numbered insights: a short title, then a brief statement.
+                 Copy an <li> … </li> to add another; the numbers update automatically. -->
+            <ol class="findings">
+              <li>
+                <h4 class="findings__title">Disliked the app’s use of their data</h4>
+                <p>Participants were unaware of Strava’s right to all of their posted content, and didn’t like this. However, one user liked the other features Strava offered and said he would continue using it as a fitness tracker.</p>
+              </li>
+              <li>
+                <h4 class="findings__title">Wanted privacy preferences to be more explicit, not something they had to find on their own time</h4>
+                <p>All participants found that privacy settings were usually difficult to access and/or understand across all fitness apps, not just Strava. They all agreed they each had a certain level of distrust of companies and how they were using their data.</p>
+              </li>
+              <li>
+                <h4 class="findings__title">Most participants liked using a fitness tracker of some kind (e.g. app, watch) and would continue to use one</h4>
+                <p>Each participant already used a fitness tracker. After our conversation, one participant felt more aware of how Strava was using her data and felt more hesitant to use it. Another participant felt strengthened in her resolve to restrict access to her phone’s built-in health app as much as possible.</p>
+              </li>
+            </ol>         
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" data-section="Define" aria-labelledby="define">
+        <h2 id="define">Define</h2>
+        <div>
+          <!-- Overview: 1–3 sentences on what this phase was for -->
+          <p class="cs-lead"><span class="todo">After gleaning key insights from the interviews, I began exploring ways I could redesign the app to address users' data & privacy concerns.</span></p>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Guerrilla research</h3>
+            <p><span>As I only had four weeks to complete the project from start-to-finish, the Guerrilla Research method allowed me to test quickly so that I could continuously iterate. Since I was able to test the design frequently, this gave me the opportunity to gather insights from multiple people. I sketched two different onboarding experiences and tested them with users:</span></p>
+            <!-- <div class="ph ph--wide">Guerrilla research photo or notes · images/strava/define-guerrilla.jpg</div> -->
+          </div>
+          <br> 
+
+          <!-- Two experience cards. Each holds 1–2 paragraphs. -->
+        
+            <div class="xp">
+              <article class="xp__card">
+                <h3 class="xp__title">Experience 1</h3>
+                <p><span>A tutorial walkthrough. During the setup process, users can follow a tutorial guide style to help them understand the app’s features and privacy settings.</span></p>
+                <!-- <p><span class="todo">Optional second paragraph: what it told you about the problem.</span></p> -->
+              </article>
+              <article class="xp__card">
+                <h3 class="xp__title">Experience 2</h3>
+                <p><span>Set privacy preferences as part of the onboarding experience.</span></p>
+                <p>(Most liked by participants)</p>
+              </article>
+            </div>
+
+            <br>     
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">User flow</h3>
+            <p><span>With a redesign in mind, I created a user flow comparing the current onboarding process with the new one. Currently, users have to navigate to their 'Settings' to personalize privacy options. In the new flow, however, users can personalize everything within the onboarding experience, reducing the number of steps. They are also given the option of completing setup later.</span></p>
+            <!-- Before / after slider
+                 Move the mouse across it to compare (no click needed). On phones,
+                 drag; with a keyboard, Tab to it and use the arrow keys.
+                 The "before" layer is the current flow; the "after" layer is the redesign.
+                 Export both at the same size so they line up exactly. -->
+            <figure class="compare" data-compare>
+              <div class="compare__layer compare__layer--after">
+                <img src="images/strava/redesigned-user-flow.png" alt="Redesigned user flow: privacy preferences are set within onboarding, with an option to complete setup later.">
+              </div>
+              <div class="compare__layer compare__layer--before">
+                <img src="images/strava/current-user-flow.png" alt="Current user flow: after onboarding, users must go to Settings to find and change their privacy options.">
+              </div>
+              <span class="compare__tag compare__tag--before" aria-hidden="true">Before</span>
+              <span class="compare__tag compare__tag--after" aria-hidden="true">After</span>
+              <div class="compare__handle" aria-hidden="true">
+                <span class="compare__knob">
+                  <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg>
+                </span>
+              </div>
+              <input class="compare__range" type="range" min="0" max="100" value="50" step="1"
+                     aria-label="Compare the current and redesigned user flow. Lower values show more of the redesign.">
+            </figure>
+            <p class="compare__hint">Move across the image to compare the current flow with the redesign.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" data-section="Develop" aria-labelledby="develop">
+        <h2 id="develop">Develop</h2>
+        <div>
+          <!-- Overview: 1–3 sentences on how you turned your findings into designs -->
+          <p class="cs-lead"><span class="todo">I created low fidelity prototypes and continued using Guerrilla testing to refine each iteration.</span></p>
+
+          <div class="cs-sub">
+            <h3 class="decision__title">Consistent privacy options</h3>
+            <p><span>Users recommended I make an ‘Only You’ option for every page. Originally, the app didn’t offer an ‘Only You’ option for the profile page, but for ultimate privacy, it would be a choice worth having. (In reality, I would collaborate with other teams, such as engineers, to know if this was a feasible option.)</span></p>
+            <!-- Before / after screens: put each image straight in, as
+                 <img class="ba__shot" src="images/strava/develop-1-before.png" alt="Describe the screen"> -->
+            <div class="ba">
+              <figure class="ba__side">
+                <figcaption class="ba__label"><span class="ba__tag">Before</span><span class="ba__desc">Privacy</span></figcaption>
+                <img class="ba__shot" src="images/strava/profile_page_before.png" alt="Wireframe of the profile page privacy step, offering only Followers and Everyone." loading="lazy">
+              </figure>
+              <figure class="ba__side">
+                <figcaption class="ba__label ba__label--after"><span class="ba__tag">After</span><span class="ba__desc">New Privacy Options</span></figcaption>
+                <img class="ba__shot" src="images/strava/profile_page_after.png" alt="Final profile page privacy step, with Only You added and selected by default." loading="lazy">
+              </figure>
+            </div>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="decision__title">Experience similar to iOS setup</h3>
+            <p><span>After another round of Guerrilla testing, one of the users enjoyed the experience as he felt it was similar to when he was setting up his iPhone. The <strong>entire onboarding felt intuitive and familiar</strong>. He also liked the icons at the top followed by a short description of what the page was about.</span></p>
+            <!-- Before / after screens: put each image straight in, as
+                 <img class="ba__shot" src="images/strava/develop-2-before.png" alt="Describe the screen"> -->
+            <div class="ba">
+              <figure class="ba__side">
+                <figcaption class="ba__label"><span class="ba__tag">Before</span><span class="ba__desc">Icons All Locks</span></figcaption>
+                <img class="ba__shot" src="images/strava/activies_before.png" alt="Wireframe of the activities privacy step, using the same lock icon as every other step." loading="lazy">
+              </figure>
+              <figure class="ba__side">
+                <figcaption class="ba__label ba__label--after"><span class="ba__tag">After</span><span class="ba__desc">New Icons Matched Content Theme</span></figcaption>
+                <img class="ba__shot" src="images/strava/activities_colour_after.png" alt="Final activities privacy step, with a cycling icon that matches the page topic." loading="lazy">
+              </figure>
+            </div>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="decision__title">Adding a progress bar to visualize the process</h3>
+            <p><span>Two users felt there were too many privacy pages to read through. By the end of the process, one user was no longer paying attention to the content of the last three slides. He did appreciate that the <strong>default was set to the most private option</strong> in case he wanted to skip the setup and review later.</span>
+              <br><br><span>Another user found the amount of screens monotonous. In response to this, I inserted a progress bar for progress tracking. When tested with users, they reflected they were <strong>more likely to complete the onboarding process</strong> because they were able to calculate how long it would take them.</span></p>
+            <!-- Three screens under one label. Images go straight in each <li>,
+                 not inside a <div class="ph">, so they aren't framed twice. -->
+            <div class="ba ba--row">
+              <p class="ba__label ba__label--after ba__label--center"><span class="ba__tag">After</span><span class="ba__desc">Progress bar added to top</span></p>
+              <ul class="ba__screens">
+                <li><img class="ba__shot" src="images/strava/custom_privacy_after.png" alt="Custom privacy options screen with the progress bar at the top showing step 3 of 10." loading="lazy"></li>
+                <li><img class="ba__shot" src="images/strava/profile_page_after.png" alt="Profile page privacy screen with the progress bar showing step 4 of 10, and Only You selected." loading="lazy"></li>
+                <li><img class="ba__shot" src="images/strava/activities_colour_after.png" alt="Activities privacy screen with the progress bar showing step 5 of 10, and Only You selected." loading="lazy"></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="decision__title">Emphasizing important words</h3>
+            <p><span>Taking input from a previous guerrilla test, I emphasized important words using italics. Users felt the change was noticeable, but didn't overpower the other content.</span></p>
+            <!-- Before / after screens: put each image straight in, as
+                 <img class="ba__shot" src="images/strava/develop-4-before.png" alt="Describe the screen"> -->
+            <div class="ba">
+              <figure class="ba__side">
+                <figcaption class="ba__label"><span class="ba__tag">Before</span><span class="ba__desc">All text format the same</span></figcaption>
+                <img class="ba__shot" src="images/strava/product_improvements_before.png" alt="Product improvements step before the change, with all text in the same style." loading="lazy">
+              </figure>
+              <figure class="ba__side">
+                <figcaption class="ba__label ba__label--after"><span class="ba__tag">After</span><span class="ba__desc">Italics Added</span></figcaption>
+                <img class="ba__shot" src="images/strava/product_improvements_after.png" alt="Product improvements step after the change, with key words in italics." loading="lazy">
+              </figure>
+            </div>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="decision__title">Quick access to ToS documentation</h3>
+            <p>Based on the insights from the empathy interviews, I included a link on each page where users could read through the legal documentation (e.g. profile ToS, Product Improvement ToS), instead of having to find the information on their own. When tested with users, most said they would most likely not read the documentation but appreciated that the option was given to them.</p>
+            <!-- Before / after screens: put each image straight in, as
+                 <img class="ba__shot" src="images/strava/develop-5-before.png" alt="Describe the screen"> -->
+            <div class="ba">
+              <figure class="ba__side">
+                <figcaption class="ba__label"><span class="ba__tag">Before</span><span class="ba__desc">Initial page layout</span></figcaption>
+                <img class="ba__shot" src="images/strava/public_photos_before.png" alt="Public photos on routes step in its initial layout, with no link to the terms." loading="lazy">
+              </figure>
+              <figure class="ba__side">
+                <figcaption class="ba__label ba__label--after"><span class="ba__tag">After</span><span class="ba__desc">Link at end of content</span></figcaption>
+                <img class="ba__shot" src="images/strava/public_photos_after.png" alt="Public photos on routes step with a link to the terms at the end of the content." loading="lazy">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" data-section="Deliver" aria-labelledby="deliver">
+        <h2 id="deliver">Deliver</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">Creating the final design as a Figma prototype.</span></p>
+
+          <!-- Solution: interactive Figma prototype -->
+          <div class="cs-sub proto">
+            <h3 class="cs-sub__title">Solution</h3>
+            <p><span>The new app experience contains an onboarding experience that provides users with clear information about how their content will be used in Strava and gives them the opportunity to set their privacy preferences at the beginning of the onboarding process.</span></p>
+            <div class="proto__frame">
+              <iframe src="https://embed.figma.com/proto/kB5vz3ghzj7INCkOha5qqz/Portfolio-Assets?node-id=108-980&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;starting-point-node-id=108%3A939&amp;embed-host=share"
+                      title="Interactive Figma prototype of the redesigned Strava sign-up flow"
+                      loading="lazy" allowfullscreen></iframe>
+            </div>
+            <p class="proto__link"><a href="https://embed.figma.com/proto/kB5vz3ghzj7INCkOha5qqz/Portfolio-Assets?node-id=108-980&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=0%3A1&amp;starting-point-node-id=108%3A939&amp;embed-host=share" target="_blank" rel="noopener">Open the prototype in a new tab</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section" data-section="Feedback" aria-labelledby="feedback">
+        <h2 id="feedback">Feedback</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">The response from users:</span></p>
+
+          <!-- Feedback stat cards: a big headline, a short label, then a sentence or two.
+               Copy an <li> … </li> to add another. -->
+          <ul class="results">
+            <li>
+              <p class="results__big">High</p>
+              <p class="results__label">User satisfaction</p>
+              <p>Participants felt more in control when they could set their own privacy settings, and felt Strava valued them as users and respected their data.</p>
+            </li>
+            <li>
+              <p class="results__big">75%</p>
+              <p class="results__label">of users more likely to keep or download the app</p>
+              <p>Guerrilla testing showed that users felt more comfortable with the redesigned app’s approach to their data. Notably, only two participants, who are uneasy about sharing health data through apps, said they would never download a fitness app.</p>
+            </li>
+          </ul>
+          
+          <!-- <p class="quotes__after"><span class="todo">What you changed, or would change, because of this feedback.</span></p> -->
+        </div>
+      </section>
+
+      <section class="cs-section" data-section="Reflection" aria-labelledby="reflection">
+        <h2 id="reflection">Reflection</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">What I learned from this experience.</span></p>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Balancing User and Company Interests</h3>
+            <p><span>As a designer I often feel constrained when designing something for the company and user. This project helped me understand that this imbalance is a part of the process as a designer. Moving forward, I want to get better at navigating how to balance the needs of different stakeholders.</span></p>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Research Results</h3>
+            <p><span>I know that each person has their own unique perspective, but some interview results still managed to surprise me. This just reinforced the idea that user research is crucial for making informed design decisions.</span></p>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Timing is Everything</h3>
+            <p><span>Planning is important, especially with such a short timeline. If I could do this again, I would place greater emphasis on interviewing a larger group of people. This would allow me to get a better understanding of a) how people are using the app, and b) how to better address their privacy concerns.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <nav class="cs-next" aria-label="Next case study">
+        <div>
+          <p>Next case study</p>
+          <a class="cs-next__title" href="hiking-app.html">Hiking App Redesign</a>
+        </div>
+        <a class="pill" href="hiking-app.html">Read case study <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"/></svg></a>
+      </nav>
+      </div>
+    </main>
+
+    <footer class="site-footer wrap band band--night">
+      <p>© <span data-year>2026</span> Millie Dayaram</p>
+      <p>Designed and coded by me in VS Code</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
