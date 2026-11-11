@@ -248,23 +248,17 @@ a.pill:hover svg { transform: translate(2px, -2px); }
   padding-top: clamp(3rem, 8vw, 7rem);
   padding-bottom: clamp(4rem, 10vw, 9rem);
 }
-.hero::before {
-  /* the one splash of colour */
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: min(48rem, 90vw);
-  aspect-ratio: 1;
-  right: -12%;
-  top: -20%;
-  background: radial-gradient(circle at center, var(--accent-glow), transparent 62%);
-  filter: blur(10px);
-  pointer-events: none;
+
+/* Remove the lime glow behind the intro */
+.hero::before { display: none;
 }
+
 .hero__statement {
-  font-size: var(--step-4);
-  max-width: 21ch;
-  margin-bottom: 2.5rem;
+  font-size: clamp(2.2rem, 1.3rem + 3.75vw, 5rem);
+  font-weight: 400;
+  line-height: 1.25;
+  word-spacing: -0.25em;
+  max-width: none;
 }
 /* "calm and clear" gets a lime highlighter that swipes in once typing ends */
 .hero__statement a {
@@ -2517,7 +2511,7 @@ h1, h2, h3, h4,
 .contact__big,
 .section-title h2 { letter-spacing: -0.04em; }
 /* Mono runs wider, so the intro title steps down a little to keep it compact */
-.hero__statement { font-size: clamp(2rem, 1.2rem + 3.35vw, 4.5rem); max-width: none; }
+.hero__statement { font-size: clamp(2.2rem, 1.3rem + 3.75vw, 5rem); font-weight: 600; max-width: none; }
 .cs-hero__title { font-size: clamp(2.2rem, 1.5rem + 3.2vw, 4.6rem); }
 
 /* ---------- Smaller headings and labels in IBM Plex Mono ---------- */
@@ -2726,3 +2720,180 @@ h1, h2, h3, h4,
   .marquee__track ul[aria-hidden="true"] { display: none; }
   .marquee ul { flex-wrap: wrap; row-gap: 0.5rem; }
 }
+
+/* Space between the hero statement and the "See my work" row */
+.hero__statement { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+
+/* Let the "3rd Year … Open to Summer 2027 UX internships" line use the full width */
+.hero__meta p { max-width: none; flex: 1 1 0; min-width: 16rem; }
+
+/* Tighter gap between the intro and "Selected work" */
+.hero { padding-bottom: clamp(1.5rem, 3vw, 3rem); }
+#work { padding-top: clamp(2rem, 4vw, 3.5rem); }
+
+/* Intro: regular weight, with only the changing last word in bold */
+.hero__statement { font-weight: 400; }
+.hero__statement .tw-word { font-weight: 600;}
+
+
+
+/* ---------- Nav: flat bar, name left · links centred · LinkedIn right ---------- */
+.site-header.wrap {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  top: 0;
+  margin-top: 0;
+  padding: 1.6rem 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--paper);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.site-header.wrap::before { display: none; }
+.site-header.is-stuck { box-shadow: 0 1px 0 var(--grid); }   /* thin line once you scroll */
+.site-header__name,
+.site-nav a,
+.site-header__extra {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+.site-nav ul { gap: 0.4rem 2.5rem; justify-content: center; }
+.site-header__extra {
+  justify-self: end;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0 0.45em;
+  background-position: 0 88%;
+  background-repeat: no-repeat;
+  transition: background-size 0.25s ease;
+}
+.site-header__extra:hover { background-size: 100% 0.45em; }
+
+@media (max-width: 720px) {
+  .site-header.wrap {
+    grid-template-columns: 1fr auto;
+    gap: 0.6rem 1rem;
+    padding: 1rem 0;
+    border-radius: 0;
+  }
+  .site-nav { grid-column: 1 / -1; grid-row: 2; }
+  .site-nav ul { justify-content: flex-start; gap: 0.3rem 1.25rem; }
+  .site-header__extra { grid-column: 2; grid-row: 1; font-size: var(--step--1); }
+}
+
+/* ---------- Nav while scrolling: the bar disappears and each link floats as its own pill ---------- */
+.site-header.wrap {
+  transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+.site-header__name,
+.site-nav a,
+.site-header__extra {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+.site-header.is-stuck {
+  background: transparent;
+  box-shadow: none;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  pointer-events: none;            /* clicks pass through the empty gaps between pills */
+}
+.site-header.is-stuck .site-nav ul { gap: 0.4rem 0.6rem; }
+.site-header__name { justify-self: start; }   /* pill hugs the name instead of stretching */
+.site-header.is-stuck .site-header__name,
+.site-header.is-stuck .site-nav a,
+.site-header.is-stuck .site-header__extra {
+  pointer-events: auto;
+  padding: 0.5rem 1.15rem;
+  background-color: rgba(243, 243, 241, 0.92);
+  border-color: var(--grid);
+  box-shadow: 0 6px 18px -10px rgba(27, 27, 29, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+/* hover: fill the pill with lime instead of the underline swipe */
+.site-header.is-stuck .site-nav a,
+.site-header.is-stuck .site-header__extra { background-image: none; }
+.site-header.is-stuck .site-nav a:hover,
+.site-header.is-stuck .site-header__extra:hover,
+.site-header.is-stuck .site-nav a[aria-current="page"] {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 720px) {
+  .site-header.is-stuck .site-header__name,
+  .site-header.is-stuck .site-nav a,
+  .site-header.is-stuck .site-header__extra { padding: 0.35rem 0.8rem; }
+  .site-header.is-stuck .site-nav ul { gap: 0.35rem; }
+}
+
+/* No shadow under the floating nav pills */
+.site-header.is-stuck .site-header__name,
+.site-header.is-stuck .site-nav a,
+.site-header.is-stuck .site-header__extra { box-shadow: none; }
+
+/* ---------- "How I design": colourful accordion cards with smooth open/close ---------- */
+.approach__body strong {
+  font-weight: 600;
+  color: var(--ink);
+  background: linear-gradient(transparent 58%, var(--accent) 58%);   /* lime marker under key words */
+}
+.approach__lead {
+  padding-left: 1.25rem;
+  border-left: 4px solid var(--accent);
+}
+.accordion { counter-reset: approach; }
+.accordion details {
+  counter-increment: approach;
+  border: 1px solid var(--grid);
+  border-radius: 22px;
+  background: #fff;
+  padding: 0 1.4rem;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: background-color 0.35s ease, border-color 0.35s ease;
+}
+.accordion details:hover { border-color: var(--accent); }
+.accordion details[open] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.accordion summary { padding: 1.15rem 0; }
+.accordion summary::before {               /* 01 / 02 / 03 badges */
+  content: counter(approach, decimal-leading-zero);
+  flex-shrink: 0;
+  display: inline-grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  margin-right: 0.25rem;
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+.accordion details[open] summary::before { background: var(--accent); color: var(--ink); }
+.accordion summary { justify-content: flex-start; }
+.accordion summary svg {
+  margin-left: auto;
+  box-sizing: content-box;
+  padding: 0.55rem;
+  border-radius: 50%;
+  background: var(--paper);
+  transition: transform 0.35s ease, background-color 0.35s ease;
+}
+.accordion details[open] summary svg { background: var(--accent); }
+.accordion details p { padding: 0 0 1.4rem 3.55rem; }
+/* chevron flips at the start of closing, not the end */
+.accordion details.is-closing summary svg { transform: none; background: var(--paper); }
+.accordion details.is-closing { background: #fff; border-color: var(--grid); }
+.accordion details.is-closing summary::before { background: var(--accent-soft); color: var(--accent-ink); }
+
