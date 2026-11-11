@@ -132,6 +132,10 @@ if (gallery) {
   }
 }
 
+// Words the end of the intro cycles through (see 4b). Keep "simple" first so
+// it matches the word in your HTML.
+const CYCLE_WORDS = ["simple", "intuitive", "understandable", "accessible", "seamless", "effortless", "approachable", "meaningful", "clear"];
+
 // 4. Typewriter effect on the intro title, with a blinking caret at the end.
 //    The full sentence stays in the page for screen readers, search engines
 //    and anyone without JavaScript; words are only hidden visually, so the
@@ -142,6 +146,7 @@ if (typeTitle) {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   typeTitle.setAttribute("aria-label", typeTitle.textContent.replace(/\s+/g, " ").trim());
   wrapLastWord(typeTitle.querySelector("a"));   // the changing word gets its own span (styled in CSS)
+  reserveTitleHeight();                          // fix the heading's height before anything animates
   const originalHTML = typeTitle.innerHTML.trim();
 
   // Once typing is done, put the original markup back (keeps the link underline
@@ -235,7 +240,29 @@ if (typeTitle) {
 //     phrase is backspaced and retyped through this list, then loops back.
 //     Edit the list to change the words (the first should match the word in
 //     your HTML). Screen readers keep hearing the original sentence.
-const CYCLE_WORDS = ["simple", "intuitive", "understandable", "accessible", "seamless", "effortless", "approachable", "meaningful", "clear"];
+
+// Long words can wrap onto a new line. Reserve the height of the tallest
+// version from the very start, so the "See my work" row never moves.
+function reserveTitleHeight() {
+  const word = typeTitle && typeTitle.querySelector(".tw-word");
+  if (!word) return;
+  const html = word.innerHTML;            // may hold letter spans while typing
+  typeTitle.style.minHeight = "";
+  let tallest = typeTitle.offsetHeight;
+  CYCLE_WORDS.forEach((w) => {
+    word.textContent = w;
+    tallest = Math.max(tallest, typeTitle.offsetHeight);
+  });
+  word.innerHTML = html;
+  typeTitle.style.minHeight = tallest + "px";
+}
+let titleResizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(titleResizeTimer);
+  titleResizeTimer = setTimeout(reserveTitleHeight, 150);
+});
+// web fonts can change the line breaks once they load
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(reserveTitleHeight);
 
 // Put the last word of the highlighted link in <span class="tw-word">
 function wrapLastWord(link) {
@@ -267,26 +294,6 @@ function startWordCycle(caret) {
   const DELETE_SPEED = 55;      // ms per letter when backspacing
   const TYPE_SPEED = 95;        // ms per letter when typing
   const GAP = 300;              // pause between deleting and typing
-
-  // Long words can wrap onto a new line. Reserve the height of the tallest
-  // version so the page below doesn't jump up and down as words change.
-  const reserveHeight = () => {
-    const current = word.textContent;
-    typeTitle.style.minHeight = "";
-    let tallest = 0;
-    CYCLE_WORDS.forEach((w) => {
-      word.textContent = w;
-      tallest = Math.max(tallest, typeTitle.offsetHeight);
-    });
-    word.textContent = current;
-    typeTitle.style.minHeight = tallest + "px";
-  };
-  reserveHeight();
-  let resizeTimer;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(reserveHeight, 150);
-  });
 
   let index = Math.max(0, CYCLE_WORDS.indexOf(word.textContent));
   const wait = (ms) => new Promise((r) => setTimeout(r, ms));
