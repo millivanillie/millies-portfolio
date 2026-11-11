@@ -141,6 +141,7 @@ const typeTitle = document.querySelector("[data-typewriter]");
 if (typeTitle) {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   typeTitle.setAttribute("aria-label", typeTitle.textContent.replace(/\s+/g, " ").trim());
+  wrapLastWord(typeTitle.querySelector("a"));   // the changing word gets its own span (styled in CSS)
   const originalHTML = typeTitle.innerHTML.trim();
 
   // Once typing is done, put the original markup back (keeps the link underline
@@ -217,6 +218,7 @@ if (typeTitle) {
           finish(caret);
           // let the browser paint once, then swipe the highlighter in
           requestAnimationFrame(() => requestAnimationFrame(() => typeTitle.classList.remove("is-typing")));
+          startWordCycle(caret);
         }, 350);
         return;
       }
@@ -227,6 +229,88 @@ if (typeTitle) {
     };
     setTimeout(typeNext, 300);
   }
+}
+
+// 4b. Word cycle: once the intro is typed, the last word of the highlighted
+//     phrase is backspaced and retyped through this list, then loops back.
+//     Edit the list to change the words (the first should match the word in
+//     your HTML). Screen readers keep hearing the original sentence.
+const CYCLE_WORDS = ["simple", "intuitive", "understandable", "accessible", "seamless", "effortless", "approachable", "meaningful", "clear"];
+
+// Put the last word of the highlighted link in <span class="tw-word">
+function wrapLastWord(link) {
+  if (!link) return null;
+  const walker = document.createTreeWalker(link, NodeFilter.SHOW_TEXT);
+  let lastText = null;
+  while (walker.nextNode()) lastText = walker.currentNode;
+  if (!lastText) return null;
+  const match = lastText.textContent.match(/^([\s\S]*?)(\S+)(\s*)$/);
+  if (!match) return null;
+  lastText.textContent = match[1];
+  const word = document.createElement("span");
+  word.className = "tw-word";
+  word.textContent = match[2];
+  lastText.after(word);
+  if (match[3]) word.after(match[3]);
+  return word;
+}
+
+function startWordCycle(caret) {
+  const link = typeTitle && typeTitle.querySelector("a");
+  if (!link) return;
+
+  const word = link.querySelector(".tw-word") || wrapLastWord(link);
+  if (!word) return;
+  word.after(caret);            // caret sits right after the changing word
+
+  const HOLD = 2200;            // how long each word stays (ms)
+  const DELETE_SPEED = 55;      // ms per letter when backspacing
+  const TYPE_SPEED = 95;        // ms per letter when typing
+  const GAP = 300;              // pause between deleting and typing
+
+  // Long words can wrap onto a new line. Reserve the height of the tallest
+  // version so the page below doesn't jump up and down as words change.
+  const reserveHeight = () => {
+    const current = word.textContent;
+    typeTitle.style.minHeight = "";
+    let tallest = 0;
+    CYCLE_WORDS.forEach((w) => {
+      word.textContent = w;
+      tallest = Math.max(tallest, typeTitle.offsetHeight);
+    });
+    word.textContent = current;
+    typeTitle.style.minHeight = tallest + "px";
+  };
+  reserveHeight();
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(reserveHeight, 150);
+  });
+
+  let index = Math.max(0, CYCLE_WORDS.indexOf(word.textContent));
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  const run = async () => {
+    await wait(HOLD + 800);     // let the highlighter swipe in first
+    for (;;) {
+      caret.classList.add("is-typing");
+      while (word.textContent.length) {
+        word.textContent = word.textContent.slice(0, -1);
+        await wait(DELETE_SPEED);
+      }
+      await wait(GAP);
+      index = (index + 1) % CYCLE_WORDS.length;
+      const next = CYCLE_WORDS[index];
+      for (let n = 1; n <= next.length; n++) {
+        word.textContent = next.slice(0, n);
+        await wait(TYPE_SPEED + Math.random() * 30);
+      }
+      caret.classList.remove("is-typing");
+      await wait(HOLD);
+    }
+  };
+  run();
 }
 
 // 5. Case-study videos: play automatically when scrolled into view, pause when
@@ -677,3 +761,49 @@ document.querySelectorAll("[data-hotspots]").forEach((box) => {
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") open(null); });
   document.addEventListener("click", (e) => { if (!box.contains(e.target)) open(null); });
 });
+
+// 14. Smooth open/close for the "How I design" accordion: the card grows and
+//     shrinks instead of jumping, and the text fades in as it opens.
+document.querySelectorAll(".accordion details").forEach((item) => {
+  const summary = item.querySelector("summary");
+  const content = item.querySelector("p");
+  if (!summary || !content) return;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const EASE = "cubic-bezier(0.25, 0.8, 0.25, 1)";
+  const DURATION = 420;
+  let anim = null;
+
+  const closedHeight = () => {
+    const s = getComputedStyle(item);
+    return summary.offsetHeight + parseFloat(s.borderTopWidth) + parseFloat(s.borderBottomWidth);
+  };
+
+  summary.addEventListener("click", (e) => {
+    if (reduceMotion) return;          // let it open instantly
+    e.preventDefault();
+    if (anim) anim.cancel();
+    const start = item.offsetHeight;
+
+    if (!item.open) {
+      item.open = true;
+      const end = item.offsetHeight;
+      anim = item.animate({ height: [start + "px", end + "px"] }, { duration: DURATION, easing: EASE });
+      content.animate(
+        { opacity: [0, 1], transform: ["translateY(-6px)", "none"] },
+        { duration: DURATION, delay: 80, easing: EASE, fill: "backwards" }
+      );
+      anim.onfinish = () => { anim = null; };
+    } else {
+      item.classList.add("is-closing");
+      anim = item.animate({ height: [start + "px", closedHeight() + "px"] }, { duration: DURATION - 60, easing: EASE });
+      content.animate({ opacity: [1, 0] }, { duration: 200, easing: "ease-out", fill: "forwards" });
+      anim.onfinish = () => {
+        item.open = false;
+        item.classList.remove("is-closing");
+        content.getAnimations().forEach((a) => a.cancel());
+        anim = null;
+      };
+    }
+  });
+});
+
