@@ -18,6 +18,9 @@
   --accent-ink: #4d5b0f;   /* dark olive: use this when green needs to be text */
   --night: #1d1f16;        /* the dark band behind Contact and the footer */
   --night-soft: #b7bba6;   /* secondary text on the dark band */
+  --on-accent: #1b1b1d;    /* text that sits on the accent colour */
+  --surface: #fff;         /* cards (e.g. the "How I design" list) */
+  --ba-before: #e8e8e5;    /* the grey "Before" panels */
 
   /* Type */
   --sans: "Manrope", "Helvetica Neue", Arial, sans-serif;   /* body text */
@@ -70,7 +73,7 @@ h1, h2, h3 {
   line-height: 1.06;
 }
 
-::selection { background: var(--accent); color: var(--ink); }
+::selection { background: var(--accent); color: var(--on-accent); }
 
 :focus-visible {
   outline: 2px solid var(--ink);
@@ -172,7 +175,7 @@ h1, h2, h3 {
   padding: 1rem 1.75rem;
   border: 1px solid var(--grid); /* same grey as the background column lines */
   border-radius: 50px;
-  background: rgba(243, 243, 241, 0.94);
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   align-items: center;
@@ -234,7 +237,7 @@ h1, h2, h3 {
   transition: background 0.2s ease, color 0.2s ease;
 }
 .pill svg { width: 1em; height: 1em; transition: transform 0.2s ease; }
-a.pill:hover { background: var(--accent); color: var(--ink); }
+a.pill:hover { background: var(--accent); color: var(--on-accent); }
 a.pill:hover svg { transform: translate(2px, -2px); }
 
 .pill--quiet {
@@ -563,8 +566,8 @@ a.pill:hover svg { transform: translate(2px, -2px); }
 .chip:hover { border-color: var(--ink); }
 .chip[aria-pressed="true"] {
   background: var(--accent);
-  border-color: var(--ink);
-  color: var(--ink);
+  border-color: var(--on-accent);
+  color: var(--on-accent);
 }
 .chip .chip__count { color: var(--ink-soft); margin-left: 0.35rem; }
 .chip[aria-pressed="true"] .chip__count { color: var(--accent-ink); }
@@ -620,7 +623,7 @@ a.pill:hover svg { transform: translate(2px, -2px); }
   padding: 2.5rem 1rem 0.9rem;
   font-size: var(--step--1);
   color: var(--ink);
-  background: linear-gradient(to top, rgba(243, 243, 241, 0.96) 45%, rgba(243, 243, 241, 0));
+  background: linear-gradient(to top, color-mix(in srgb, var(--paper) 96%, transparent) 45%, transparent);
   transform: translateY(101%);
   transition: transform 0.3s ease;
 }
@@ -1143,7 +1146,7 @@ a.pill:hover svg { transform: translate(2px, -2px); }
   font-size: var(--step--1);
   border: 1px solid var(--accent-ink);
 }
-.rate--yes { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+.rate--yes { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .rate--partly { background: var(--accent-soft); }
 .rate--no { background: transparent; color: var(--ink-soft); border-color: var(--rule); }
 
@@ -1315,7 +1318,7 @@ a.pill:hover svg { transform: translate(2px, -2px); }
   border: 2px solid var(--accent-ink);
   border-radius: 50%;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(27, 27, 29, 0.25);
   transition: transform 0.2s ease, background 0.2s ease;
@@ -1407,7 +1410,7 @@ a.pill:hover svg { transform: translate(2px, -2px); }
   height: 1.4em;
   border-radius: 50%;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
 }
 @media (hover: none) { .hotspots__hint { font-size: 0; } .hotspots__hint::after { content: "Tap each + to see the issue"; font-size: var(--step--1); } }
 
@@ -1656,7 +1659,7 @@ a.pill:hover svg { transform: translate(2px, -2px); }
   transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
 }
 .photos__btn svg { width: 1rem; height: 1rem; }
-.photos__btn:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+.photos__btn:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .photos__btn:disabled { opacity: 0.3; cursor: default; }
 .photos__btn:focus-visible,
 .photos__track:focus-visible { outline-color: var(--accent); }
@@ -2005,7 +2008,7 @@ a.pill:hover svg { transform: translate(2px, -2px); }
   border-radius: var(--radius);
   font-family: var(--mono);
   font-size: var(--step--1);
-  background: rgba(251, 251, 250, 0.9);
+  background: color-mix(in srgb, var(--paper-raised) 90%, transparent);
   border: 1px solid var(--rule);
   pointer-events: none;
   transition: opacity 0.2s ease;
@@ -2084,7 +2087,7 @@ a.pill:hover svg { transform: translate(2px, -2px); }
   padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 2.5vw, 2rem);
   background: var(--accent-soft);
 }
-.ba__side:has(.ba__label:not(.ba__label--after)) { background: #e8e8e5; }
+.ba__side:has(.ba__label:not(.ba__label--after)) { background: var(--ba-before); }
 /* Before / After tag, then the description as plain text */
 .ba__label {
   display: flex;
@@ -2112,7 +2115,7 @@ a.pill:hover svg { transform: translate(2px, -2px); }
   border-radius: var(--radius);
   background: var(--paper-raised);
 }
-.ba__label--after .ba__desc { background: var(--accent); }
+.ba__label--after .ba__desc { background: var(--accent); color: var(--on-accent); }
 .ba__shot {
   display: block;
   width: 100%;
@@ -2585,7 +2588,7 @@ h1, h2, h3, h4,
 .toc__list > li > a:hover { color: var(--ink); }
 .toc__list > li > a[aria-current="location"] {
   background: var(--accent);
-  color: var(--ink);
+  color: var(--on-accent);
 }
 
 /* Subheadings: tucked away, then slide open under the section you're in */
@@ -2638,7 +2641,7 @@ h1, h2, h3, h4,
     z-index: 12;
     margin: 0.75rem calc(-1 * var(--gutter)) 0;
     padding: 0.5rem var(--gutter);
-    background: rgba(243, 243, 241, 0.94);
+    background: color-mix(in srgb, var(--paper) 94%, transparent);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--grid);
@@ -2810,7 +2813,7 @@ h1, h2, h3, h4,
 .site-header.is-stuck .site-header__extra {
   pointer-events: auto;
   padding: 0.5rem 1.15rem;
-  background-color: rgba(243, 243, 241, 0.92);
+  background-color: color-mix(in srgb, var(--paper) 92%, transparent);
   border-color: var(--grid);
   box-shadow: 0 6px 18px -10px rgba(27, 27, 29, 0.3);
   backdrop-filter: blur(10px);
@@ -2853,7 +2856,7 @@ h1, h2, h3, h4,
   counter-increment: approach;
   border: 1px solid var(--grid);
   border-radius: 22px;
-  background: #fff;
+  background: var(--surface);
   padding: 0 1.4rem;
   margin-bottom: 0.75rem;
   overflow: hidden;
@@ -2880,7 +2883,7 @@ h1, h2, h3, h4,
   background: var(--accent-soft);
   transition: background-color 0.35s ease, color 0.35s ease;
 }
-.accordion details[open] summary::before { background: var(--accent); color: var(--ink); }
+.accordion details[open] summary::before { background: var(--accent); color: var(--on-accent); }
 .accordion summary { justify-content: flex-start; }
 .accordion summary svg {
   margin-left: auto;
@@ -2894,6 +2897,297 @@ h1, h2, h3, h4,
 .accordion details p { padding: 0 0 1.4rem 3.55rem; }
 /* chevron flips at the start of closing, not the end */
 .accordion details.is-closing summary svg { transform: none; background: var(--paper); }
-.accordion details.is-closing { background: #fff; border-color: var(--grid); }
+.accordion details.is-closing { background: var(--surface); border-color: var(--grid); }
 .accordion details.is-closing summary::before { background: var(--accent-soft); color: var(--accent-ink); }
 
+/* Arrow in the intro ("nurse → interaction designer"):
+   a long arrow on a lime highlighter block, matching "complex things feel simple" */
+.hero__arrow {
+  display: inline-block;
+  width: 1.9em;
+  height: 0.85em;
+  margin: 0 0.05em;
+  vertical-align: -0.04em;
+  border-radius: 0.1em;
+  background-color: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 20' fill='none' stroke='%231b1b1d' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10h52M46 3l9 7-9 7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 74% auto;
+  background-position: 45% 50%;
+  color: transparent;            /* the → character stays for typing and copy/paste; the drawn arrow replaces it */
+  overflow: hidden;
+  transform: rotate(-3deg);
+}
+/* hidden until the typing reaches it */
+.hero__statement.is-typing .hero__arrow:not(:has(.is-on)) { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero__arrow { animation: arrow-pop 0.5s cubic-bezier(0.34, 1.5, 0.64, 1) both; }
+  .hero__statement:not(.is-typing) .hero__arrow { animation: none; }
+  .hero__statement:not(.is-typing) .hero__arrow:hover { animation: arrow-nudge 0.8s ease-in-out infinite; }
+}
+@keyframes arrow-pop {
+  from { transform: rotate(-3deg) scaleX(0.2); transform-origin: left center; }
+  to   { transform: rotate(-3deg) scaleX(1);   transform-origin: left center; }
+}
+/* the arrow slides forward inside its block, like it's pointing the way */
+@keyframes arrow-nudge {
+  0%, 60%, 100% { background-position: 45% 50%; }
+  72%           { background-position: 85% 50%; }
+  84%           { background-position: 45% 50%; }
+  92%           { background-position: 65% 50%; }
+}
+.nowrap { white-space: nowrap; }   /* keeps "nurse" and the arrow on the same line */
+
+/* Hover: flip the colours, with a dark block and a lime arrow */
+.hero__arrow {
+  transition: background-color 0.25s ease;
+}
+.hero__arrow:hover {
+  background-color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 20' fill='none' stroke='%23cbe851' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10h52M46 3l9 7-9 7'/%3E%3C/svg%3E");
+}
+
+/* Cursor label ("Go to LinkedIn") that replaces the pointer over teammate links */
+@media (hover: hover) and (pointer: fine) {
+  .has-cursor-label, .has-cursor-label * { cursor: none; }
+}
+.cursor-label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none;
+  margin: -1.1rem 0 0 -0.6rem;              /* sits right on the pointer's tip */
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: none;                         /* appears instantly, right where the pointer is */
+}
+.cursor-label.is-on { opacity: 1; visibility: visible; }
+
+/* Gallery: no border or frame around the photos */
+.gallery__open .ph {
+  border: 0;
+  padding: 0;
+  background: none;
+}
+.gallery__open img { border: 0; }
+
+/* ===================== Making the page more interesting ===================== */
+
+/* --- 2. Reveal on scroll (the script adds .reveal, then .is-visible) --- */
+.reveal { opacity: 0; }
+.reveal.is-visible {
+  animation: reveal-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms) both;
+}
+@keyframes reveal-up {
+  from { opacity: 0; translate: 0 28px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* --- 3. Project images: tilt on hover, with a "View case study" pill as the cursor --- */
+.project__media.has-cursor-label { cursor: none; }
+.project__media .project__img {
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.project__media.has-cursor-label:hover .project__img {
+  transform: rotate(-2.5deg) scale(1.04);
+}
+.project--flip .project__media.has-cursor-label:hover .project__img {
+  transform: rotate(2.5deg) scale(1.04);
+}
+
+/* --- 4. Quick-facts strip under the intro --- */
+.quick-facts {
+  list-style: none;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 1.1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  color: var(--ink);
+}
+.quick-facts li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.quick-facts li::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.quick-facts strong { font-weight: 600; }
+
+/* ===================== Colour modes =====================
+   Light is the default. The switcher (bottom-left corner) sets
+   data-theme="afternoon" or data-theme="dark" on the page.
+   Change the colours below to adjust each mode. */
+
+/* Midafternoon: warm, sunny sand with a golden accent */
+:root[data-theme="afternoon"] {
+  --paper: #f6ecdc;
+  --paper-raised: #fbf4e8;
+  --ink: #2b2017;
+  --ink-soft: #6f5c4b;
+  --rule: #dcc7a8;
+  --grid: rgba(43, 32, 23, 0.06);
+  --accent: #f4b63f;
+  --accent-soft: #fae6b9;
+  --accent-glow: rgba(244, 182, 63, 0.45);
+  --accent-ink: #7a4b07;
+  --night: #2c1f15;
+  --night-soft: #d3bea3;
+  --on-accent: #2b2017;
+  --surface: #fffaf1;
+  --ba-before: #eadfcb;
+}
+
+/* Dark: deep olive-black with the lime accent glowing */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #14150f;
+  --paper-raised: #1d1f17;
+  --ink: #ecede4;
+  --ink-soft: #a7aa98;
+  --rule: #3a3d30;
+  --grid: rgba(236, 237, 228, 0.06);
+  --accent: #cbe851;
+  --accent-soft: #283014;
+  --accent-glow: rgba(203, 232, 81, 0.22);
+  --accent-ink: #cbe851;
+  --night: #0b0c07;
+  --night-soft: #a3a693;
+  --on-accent: #1b1b1d;
+  --surface: #1d1f17;
+  --ba-before: #23251c;
+}
+/* lime highlight under the intro phrase stays readable on dark */
+:root[data-theme="dark"] .hero__statement a { background-image: linear-gradient(rgba(203, 232, 81, 0.45), rgba(203, 232, 81, 0.45)); }
+/* cards and pills that are lime keep dark text */
+:root[data-theme="dark"] .accordion details[open],
+:root[data-theme="dark"] .accordion details[open] p,
+:root[data-theme="afternoon"] .accordion details[open] p { color: var(--ink); }
+:root[data-theme="dark"] .accordion details[open] { background: var(--accent-soft); }
+:root[data-theme="dark"] .marquee { color: var(--on-accent); }
+
+/* anything lime keeps dark text and icons in every mode */
+.accordion details[open] summary::before,
+.accordion details[open] summary svg,
+.site-header.is-stuck .site-nav a:hover,
+.site-header.is-stuck .site-header__extra:hover,
+.site-header.is-stuck .site-nav a[aria-current="page"] { color: var(--on-accent); }
+:root[data-theme="dark"] .accordion details[open] summary::before { background: var(--accent); }
+
+/* dark bands (Contact, footer) keep light text in dark mode:
+   inside them, "paper" means the light text colour */
+:root[data-theme="dark"] .band--night { --paper: #ecede4; }
+
+/* smooth fade between modes */
+body, .site-header.wrap, .accordion details, .project__img { transition: background-color 0.4s ease, color 0.4s ease; }
+
+/* ---- the switcher ---- */
+.theme-switch {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 50;
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.theme-switch button {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.theme-switch button:hover { color: var(--ink); background: var(--grid); }
+.theme-switch button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.theme-switch svg { width: 1.05rem; height: 1.05rem; }
+.theme-switch button:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+@media (max-width: 720px) {
+  .theme-switch { left: 0.6rem; bottom: 0.6rem; }
+  .theme-switch button { width: 1.9rem; height: 1.9rem; }
+}
+
+/* Colour switcher in the top-right of the nav, next to LinkedIn */
+.site-header__end {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.site-header .theme-switch {
+  position: static;
+  padding: 0.2rem;
+  pointer-events: auto;          /* stays clickable while the nav floats as pills */
+}
+.site-header .theme-switch button { width: 1.85rem; height: 1.85rem; }
+.site-header .theme-switch svg { width: 0.95rem; height: 0.95rem; }
+@media (max-width: 720px) {
+  .site-header__end { grid-column: 2; grid-row: 1; gap: 0.6rem; }
+  .site-header .theme-switch button { width: 1.6rem; height: 1.6rem; }
+}
+@media (max-width: 720px) {
+  .site-header__name { white-space: nowrap; font-size: var(--step--1); }
+  .site-header.is-stuck .site-header__name,
+  .site-header.is-stuck .site-header__extra { padding: 0.35rem 0.7rem; }
+}
+
+/* "Beyond design" opening: Spotify playlist on the left, intro words on the right */
+.life__top {
+  display: grid;
+  grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.life__top .life__intro { margin: 0; max-width: 30ch; }
+.life__label {
+  margin: 0 0 0.75rem;
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  color: var(--accent-ink);
+}
+.life__player {
+  display: block;
+  width: 100%;
+  height: 352px;
+  border: 0;
+  border-radius: 14px;
+}
+@media (max-width: 860px) {
+  .life__top { grid-template-columns: 1fr; }
+  .life__top .life__intro { order: -1; }    /* on phones the words come first */
+  .life__player { height: 232px; }
+}
+
+/* Arrow: no movement on hover (the colour flip stays) */
+.hero__statement .hero__arrow:hover { animation: none !important; }

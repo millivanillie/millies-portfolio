@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChequeMate — Millie Dayaram</title>
+  <meta name="description" content="ChequeMate: a financial resilience engine that tests a customer's finances against a shock and turns the result into a plan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="grid-lines" aria-hidden="true"></div>
+
+  <aside class="rail" aria-hidden="true">
+    <span class="rail__label"><strong>Millie</strong> Dayaram</span>
+    <span class="rail__label" data-rail-section>Overview</span>
+    <span class="rail__section">ChequeMate</span>
+  </aside>
+
+  <div class="page">
+    <header class="site-header wrap">
+      <a class="site-header__name" href="index.html">Millie Dayaram</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html#work" aria-current="page">Work</a></li>
+          <li><a href="index.html#approach">About</a></li>
+          <li><a href="resume.pdf">Resume</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="site-header__extra" href="https://www.linkedin.com/in/millie-dayaram" target="_blank" rel="noopener">LinkedIn</a>
+    </header>
+
+    <!-- HOW TO EDIT THIS PAGE
+         • Text in <span class="todo">…</span> is a draft. Replace it with your own words,
+           then remove the <span class="todo"> and </span> around it.
+         • Image placeholders look like <div class="ph">Image · images/chequemate/….png</div>.
+           Save your image with that name in images/chequemate/ and replace the whole <div> with
+             <img class="cs-sub__img" src="images/chequemate/….png" alt="Describe the image">
+         • Delete any section you don't need (and its link in the tl;dr list). -->
+
+    <main id="main" class="wrap cs-layout">
+      <nav class="toc" aria-label="Case study contents">
+        <p class="toc__title">tl;dr</p>
+        <ol class="toc__list">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#discover">Discover</a></li>
+          <li><a href="#define">Define</a></li>
+          <li><a href="#develop">Develop</a></li>
+          <li><a href="#deliver">Deliver</a></li>
+          <li><a href="#pitch">Pitch</a></li>
+          <li><a href="#reflection">Reflection</a></li>
+        </ol>
+      </nav>
+
+      <div class="cs-body">
+      <section class="cs-hero" id="overview" data-section="Overview" aria-labelledby="cs-title">
+        <div class="cs-hero__text">
+          <h1 class="cs-hero__title" id="cs-title">ChequeMate</h1>
+          <p class="cs-hero__summary"><span class="todo">A financial resilience engine that shows people how ready they are for a financial shock, and gives them a plan to bounce back.</span></p>
+          <a class="pill pill--quiet" href="index.html#work">Back to all work</a>
+        </div>
+        <div class="cs-hero__media">
+          <img class="cs-hero__img" src="images/chequemate/chequemate-mockup.png" alt="The ChequeMate app shown on a phone.">
+        </div>
+      </section>
+
+      <dl class="cs-facts">
+        <div><dt>Role</dt><dd><a href="https://www.linkedin.com/in/abhishek8524/">Abhishek Chauhan</a><br> Millie Dayaram (UI/UX Designer)<br><a href="https://www.linkedin.com/in/savleen-kaur-ghataurhe/">Savleen Kaur</a><br><a href ="https://www.linkedin.com/in/khvostiv/">Vasilina Khovstikova</a></dd></div>
+        <div><dt>Timeline</dt><dd>Sheridan Datathon<br>24 Hours </dd></div>
+        <div><dt>Tools</dt><dd>Claude AI<br>Figma<br>Github</dd></div>
+        <div><dt>Methods</dt><dd>UI/UX<br>User Research</dd></div>
+      </dl>
+
+      <!-- ============ The challenge ============ -->
+      <section class="cs-section" data-section="Challenge" aria-labelledby="problem">
+        <h2 id="problem">The challenge</h2>
+        <div>
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">The brief</h3>
+            <p>For Sheridan Datathon 2026, our team chose Tangerine's <strong>"Resilience Rewired"</strong> track. The challenge: help customers understand and build their financial resilience using real banking data.</p>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Problem</h3>
+            <p>An unexpected expense, like a job loss, a car repair or a rent increase, can throw anyone's finances off track. Most banking apps only show what has already happened, not how prepared you are for what might happen next.</p>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Solution</h3>
+            <p>ChequeMate shows a customer's finances, applies a financial shock, and builds a realistic plan to recover, with challenges and badges that keep people motivated along the way. After reviewing the data, we identified key patterns and insights that illuminated tools for helping users build their financial resilience.</p>
+            <div class="ph">Image · images/chequemate/solution-overview.png</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Discover ============ -->
+      <section class="cs-section" data-section="Discover" aria-labelledby="discover">
+        <h2 id="discover">Discover</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">We started with the data: what does financial resilience actually look like in real accounts?</span></p>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">The data</h3>
+            <p>We built ChequeMate on historical banking data from 4,500 accounts. Tangerine's dataset includes 9 different .csv files containing clients account numbers, location, income data, and transaction histories.</p>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Insights</h3>
+            <ul class="findings">
+              <li><span class="todo">Insight 1: Users can find it helpful to plan for future financial shocks by calculating different scenarios that take into account their unique financial situations.</span></li>
+              <li><span class="todo">Insight 2: what made some accounts more resilient than others</span></li>
+              <li><span class="todo">Insight 3: what this meant for the people behind the accounts</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Define ============ -->
+      <section class="cs-section" data-section="Define" aria-labelledby="define">
+        <h2 id="define">Define</h2>
+        <div>
+          <p class="cs-hmw"><strong>How might we</strong> <span class="todo">help people see how prepared they are for a financial shock, and give them clear, achievable steps to become more resilient?</span></p>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Who we designed for</h3>
+            <p><span class="todo">Describe your target users: who they are, what worries them about money, and why "modern but accessible for all ages" mattered for the brand.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Develop ============ -->
+      <section class="cs-section" data-section="Develop" aria-labelledby="develop">
+        <h2 id="develop">Develop</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">Turning the data into an experience people would actually want to come back to.</span></p>
+
+          <div class="cs-sub">
+            <h3 class="decision__title">See your finances at a glance</h3>
+            <p><span class="todo">How the app summarises a customer's current financial picture.</span></p>
+            <div class="ph">Image · images/chequemate/develop-snapshot.png</div>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="decision__title">Test it against a shock</h3>
+            <p><span class="todo">How users choose or experience a financial shock, and how the app shows its impact.</span></p>
+            <div class="ph">Image · images/chequemate/develop-shock.png</div>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="decision__title">A plan to bounce back</h3>
+            <p><span class="todo">How the app turns the result into clear, step-by-step actions.</span></p>
+            <div class="ph">Image · images/chequemate/develop-plan.png</div>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="decision__title">Challenges and badges</h3>
+            <p><span class="todo">Why you added challenges and badges, and how they keep people motivated.</span></p>
+            <div class="ph">Image · images/chequemate/develop-badges.png</div>
+          </div>
+
+          <div class="cs-sub">
+            <h3 class="decision__title">Branding</h3>
+            <p><span class="todo">Creating the ChequeMate logo and visual identity: modern, but accessible for all ages.</span></p>
+            <div class="ph">Image · images/chequemate/branding.png</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Deliver ============ -->
+      <section class="cs-section" data-section="Deliver" aria-labelledby="deliver">
+        <h2 id="deliver">Deliver</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">The final product, built and presented within the 2-day datathon.</span></p>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Final design</h3>
+            <p><span class="todo">A short description of the final experience.</span></p>
+            <div class="ph">Image · images/chequemate/final-design.png</div>
+            <p class="proto__link"><a href="https://chequemate.work" target="_blank" rel="noopener">Visit chequemate.work</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Pitch ============ -->
+      <section class="cs-section" data-section="Pitch" aria-labelledby="pitch">
+        <h2 id="pitch">Pitch</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">Presenting ChequeMate to the judges.</span></p>
+          <div class="cs-sub">
+            <h3 class="cs-sub__title">Results</h3>
+            <p><span class="todo">How the pitch went, judges' feedback, and any placement or recognition.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Reflection ============ -->
+      <section class="cs-section" data-section="Reflection" aria-labelledby="reflection">
+        <h2 id="reflection">Reflection</h2>
+        <div>
+          <p class="cs-lead"><span class="todo">What I learned from this experience.</span></p>
+
+          <div class="cs-sub">
+            <h3 class="cs-sub__title"><span class="todo">Designing with real data</span></h3>
+            <p><span class="todo">What it was like to design from a large real-world data set.</span></p>
+          </div>
+          <div class="cs-sub">
+            <h3 class="cs-sub__title"><span class="todo">Working under a deadline</span></h3>
+            <p><span class="todo">How your team made decisions quickly in 2 days.</span></p>
+          </div>
+          <div class="cs-sub">
+            <h3 class="cs-sub__title"><span class="todo">Collaborating across disciplines</span></h3>
+            <p><span class="todo">Working with teammates from data and development backgrounds.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <nav class="cs-next" aria-label="Next case study">
+        <div>
+          <p>Next case study</p>
+          <a class="cs-next__title" href="fitness-app.html">Strava App Redesign</a>
+        </div>
+        <a class="pill" href="fitness-app.html">Read case study <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"/></svg></a>
+      </nav>
+      </div>
+    </main>
+
+    <footer class="site-footer wrap band band--night">
+      <p>© <span data-year>2026</span> Millie Dayaram</p>
+      <p>Designed and coded by me in VS Code</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

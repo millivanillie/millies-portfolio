@@ -39,7 +39,7 @@
       <!-- ============ Intro ============ -->
       <section class="hero wrap" id="intro" data-section="Intro" aria-labelledby="intro-title">
         <h1 class="hero__statement" id="intro-title" data-typewriter>
-          Hey there, I’m Millie <img class="hero__portrait" src="images/millie-pill.jpg" alt="Portrait of Millie smiling" width="577" height="600"> nurse turned interaction designer creating experiences that make complex things feel <a href="#approach"><span class="tw-word">simple</span></a>
+          Hey there, I’m Millie <img class="hero__portrait" src="images/millie-pill.jpg" alt="Portrait of Millie smiling" width="577" height="600"> <span class="nowrap">nurse <span class="hero__arrow">→</span></span> interaction designer creating experiences that make complex things feel <a href="#approach"><span class="tw-word">simple</span></a>
         </h1>
         <div class="hero__meta">
           <a class="pill" href="#work">
@@ -57,7 +57,31 @@
           <span>2 case studies</span>
         </div>
 
-        <!-- Project 1 -->
+      <!-- Project: ChequeMate -->
+        <!-- <article class="project">
+          <div class="project__text">
+            <h3 class="project__title"><a href="chequemate.html">ChequeMate</a></h3>
+            <p class="project__when">Nov 2026 · Financial resilience · <span class="todo">Figma</span></p>
+            <div class="project__link-row">
+              <a class="pill" href="chequemate.html">
+                Read case study
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"/></svg>
+              </a>
+            </div>
+            <dl class="pnr">
+              <dt>Problem</dt>
+              <dd><span class="todo">An unexpected expense, like a job loss, car repair or rent increase, can throw people's finances off track, and most banking apps only show what has already happened.</span></dd>
+              <dt>Needs</dt>
+              <dd><span class="todo">A clear picture of how prepared they are for a financial shock, and simple, realistic steps to recover from one.</span></dd>
+              <dt>Solution</dt>
+              <dd><span class="todo">A financial resilience engine, built on banking data from 4,500 accounts, that tests a customer's finances against a shock and turns the result into a step-by-step plan, with challenges and badges to keep them motivated.</span></dd>
+            </dl>
+          </div>
+          <div class="project__media">
+            <img class="project__img" src="images/chequemate/chequemate-mockup.png" alt="The ChequeMate app on a phone, showing a customer's financial resilience plan.">
+          </div> -->
+        
+        </article><!-- Strava -->
         <article class="project">
           <div class="project__text">
             <h3 class="project__title"><a href="fitness-app.html">Rethinking Fitness Data</a></h3>
@@ -82,7 +106,7 @@
           </div>
         </article>
 
-        <!-- Project 2 -->
+        <!-- Hiking Project -->
         <article class="project project--flip">
           <div class="project__text">
             <h3 class="project__title"><a href="hiking-app.html">Beyond the Trail</a></h3>
@@ -195,7 +219,16 @@
           <span>The stuff that keeps me going</span>
         </div>
 
-        <p class="life__intro">When I’m not in school or at work, I’m probably outside, playing music, or making something with my hands. There’s nothing more satisfying than wearing or using something I made myself.</p>
+        <div class="life__top">
+          <div class="life__listening">
+            <p class="life__label">What's on repeat</p>
+            <iframe class="life__player"
+                    src="https://open.spotify.com/embed/playlist/0u87bnviADv1MMYPwZg2Tr?utm_source=generator"
+                    loading="lazy" title="Millie's Spotify playlist"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          </div>
+          <p class="life__intro">When I’m not in school or at work, I’m probably outside, playing music, or making something with my hands. There’s nothing more satisfying than wearing or using something I made myself.</p>
+        </div>
 
         <!-- Photo gallery
              To add a photo: replace the <div class="ph">…</div> inside an item with
@@ -439,4 +472,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-

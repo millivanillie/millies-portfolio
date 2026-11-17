@@ -144,7 +144,7 @@ const typeTitle = document.querySelector("[data-typewriter]");
 
 if (typeTitle) {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  typeTitle.setAttribute("aria-label", typeTitle.textContent.replace(/\s+/g, " ").trim());
+  typeTitle.setAttribute("aria-label", typeTitle.textContent.replace(/→/g, "turned").replace(/\s+/g, " ").trim());   // screen readers hear "nurse turned interaction designer"
   wrapLastWord(typeTitle.querySelector("a"));   // the changing word gets its own span (styled in CSS)
   reserveTitleHeight();                          // fix the heading's height before anything animates
   const originalHTML = typeTitle.innerHTML.trim();
@@ -814,3 +814,165 @@ document.querySelectorAll(".accordion details").forEach((item) => {
   });
 });
 
+// 15. No lonely last words: glue the last two words of every paragraph together
+//     (with a non-breaking space) so a line never ends with a single word.
+//     Works in every browser; CSS text-wrap: pretty improves it further where supported.
+(function preventOrphans() {
+  const selector = "main p, main li, main dd, main figcaption, main blockquote, main summary, .cs-hero p";
+  document.querySelectorAll(selector).forEach((el) => {
+    if (el.closest("[data-typewriter]")) return;          // the intro handles its own text
+    // find the last text node that actually has words in it
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let last = null;
+    while (walker.nextNode()) if (walker.currentNode.textContent.trim()) last = walker.currentNode;
+    if (!last) return;
+    const text = last.textContent;
+    const trimmed = text.replace(/\s+$/, "");
+    const i = trimmed.lastIndexOf(" ");
+    if (i <= 0) return;                                    // one word only: nothing to glue
+    const lastTwo = trimmed.slice(trimmed.lastIndexOf(" ", i - 1) + 1);
+    if (lastTwo.length > 22) return;                       // very long pair: let it wrap normally
+    last.textContent = trimmed.slice(0, i) + " " + trimmed.slice(i + 1) + text.slice(trimmed.length);
+  });
+})();
+
+// 16. Cursor label: a lime pill that replaces the mouse pointer on hover.
+//     • Links in a case study's facts row (Role, etc.) say "Go to LinkedIn"
+//       and open in a new tab.
+//     • Project images on the home page say "View case study" and open it.
+//     • Any other link can use it too: add data-cursor="Your text" to the <a>.
+(function cursorLabel() {
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;   // mouse only
+  const links = [...document.querySelectorAll(".cs-facts a, a[data-cursor]")];
+  const media = [...document.querySelectorAll(".project__media")];
+  if (!links.length && !media.length) return;
+
+  const label = document.createElement("div");
+  label.className = "cursor-label";
+  label.setAttribute("aria-hidden", "true");
+  document.body.appendChild(label);
+
+  let x = 0, y = 0, frame = null;
+  const place = () => { label.style.left = x + "px"; label.style.top = y + "px"; frame = null; };
+
+  const attach = (el, text) => {
+    el.classList.add("has-cursor-label");
+    el.addEventListener("mouseenter", (e) => {
+      label.textContent = text;
+      x = e.clientX; y = e.clientY; place();
+      label.classList.add("is-on");
+    });
+    el.addEventListener("mousemove", (e) => {
+      x = e.clientX; y = e.clientY;
+      if (!frame) frame = requestAnimationFrame(place);
+    });
+    el.addEventListener("mouseleave", () => label.classList.remove("is-on"));
+  };
+
+  links.forEach((link) => {
+    const isLinkedIn = /linkedin\.com/.test(link.href);
+    attach(link, link.dataset.cursor || (isLinkedIn ? "Go to LinkedIn" : "Open link"));
+    if (link.hostname && link.hostname !== location.hostname) {   // other websites open in a new tab
+      link.target = "_blank";
+      link.rel = "noopener";
+    }
+  });
+
+  media.forEach((box) => {
+    const caseLink = box.closest(".project")?.querySelector("a.pill, .project__title a");
+    if (!caseLink) return;
+    attach(box, "View case study");
+    box.addEventListener("click", () => { window.location.href = caseLink.href; });
+  });
+
+  window.addEventListener("scroll", () => label.classList.remove("is-on"), { passive: true });
+})();
+
+// 17. Reveal on scroll: headings, cards and photos fade and slide up as they
+//     come into view. Without JavaScript (or with reduced motion) everything
+//     simply shows as normal.
+(function revealOnScroll() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!("IntersectionObserver" in window)) return;
+  const groups = [
+    ".section-title", ".project", ".approach__lead", ".approach__body",
+    ".accordion__intro", ".accordion details", ".life__intro", ".gallery",
+    ".life__subhead", ".inspo article", ".lately > div", ".background > div",
+    ".contact__big", ".contact__grid > div", ".quick-facts",
+    ".cs-facts", ".cs-section > h2", ".cs-sub", ".cs-lead", ".cs-next"
+  ];
+  const items = document.querySelectorAll(groups.join(","));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      io.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+
+  items.forEach((el) => {
+    if (el.closest(".hero")) return;                       // the intro has its own animation
+    // items side by side get a small stagger
+    const siblings = [...el.parentElement.children].filter((c) => c.matches(groups.join(",")));
+    const i = siblings.indexOf(el);
+    if (i > 0) el.style.setProperty("--reveal-delay", Math.min(i, 5) * 80 + "ms");
+    el.classList.add("reveal");
+    io.observe(el);
+  });
+})();
+
+// 18. Colour modes: Light · Midafternoon · Dark.
+//     A small switcher sits in the bottom-left corner. The choice is
+//     remembered for next time; on a first visit, the device's dark-mode
+//     setting picks Light or Dark.
+(function colourModes() {
+  const root = document.documentElement;
+  const KEY = "md-theme";
+  const modes = [
+    { id: "light", label: "Light mode",
+      icon: '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/>' },
+    { id: "afternoon", label: "Midafternoon mode",
+      icon: '<path d="M3 17.5h18M6.5 17.5a5.5 5.5 0 0 1 11 0"/><path d="M12 6.5v2M5.6 9.6l1.4 1.4M18.4 9.6 17 11M3 21h18"/>' },
+    { id: "dark", label: "Dark mode",
+      icon: '<path d="M19.5 14.6A7.8 7.8 0 0 1 9.4 4.5a7.8 7.8 0 1 0 10.1 10.1Z"/>' },
+  ];
+  let saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const apply = (id) => {
+    if (id === "light") root.removeAttribute("data-theme");
+    else root.setAttribute("data-theme", id);
+    group.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === id)));
+  };
+
+  const group = document.createElement("div");
+  group.className = "theme-switch";
+  group.setAttribute("role", "group");
+  group.setAttribute("aria-label", "Colour mode");
+  modes.forEach((m) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.dataset.mode = m.id;
+    b.setAttribute("aria-label", m.label);
+    b.title = m.label;
+    b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${m.icon}</svg>`;
+    b.addEventListener("click", () => {
+      apply(m.id);
+      try { localStorage.setItem(KEY, m.id); } catch (e) {}
+    });
+    group.appendChild(b);
+  });
+  // put the switcher in the top-right of the nav, next to LinkedIn
+  const header = document.querySelector(".site-header");
+  if (header) {
+    const end = document.createElement("div");
+    end.className = "site-header__end";
+    const extra = header.querySelector(".site-header__extra");
+    if (extra) end.appendChild(extra);
+    end.appendChild(group);
+    header.appendChild(end);
+  } else {
+    document.body.appendChild(group);
+  }
+  apply(saved || (prefersDark ? "dark" : "light"));
+})();
